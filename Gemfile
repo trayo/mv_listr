@@ -16,6 +16,7 @@ gem 'pg'
 gem 'faker'
 gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'simplecov', require: false, group: :test
