@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+tmp/*
+log/*
+.DS_STORE
+coverage
+.env
