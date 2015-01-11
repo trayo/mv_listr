@@ -20,3 +20,4 @@ log/*
 .DS_STORE
 coverage
 .env
+scratch
