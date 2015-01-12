@@ -17,5 +17,8 @@
  */
 
 @import 'nav_bar';
-@import 'homepage';
 
+.background-image {
+  background: asset_url('admission.jpg');
+  background-size: cover;
+}
