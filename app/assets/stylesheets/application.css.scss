@@ -15,3 +15,10 @@
  *= require foundation_and_overrides
 
  */
+
+@import 'nav_bar';
+
+.background-image {
+  background: asset_url('admission.jpg');
+  background-size: cover;
+}
