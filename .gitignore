@@ -22,4 +22,4 @@ coverage
 .env
 scratch
 public/assets
-
+.rspec
