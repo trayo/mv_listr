@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113002629) do
+ActiveRecord::Schema.define(version: 20150113192331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "recommendations", force: :cascade do |t|
+    t.string   "title"
+    t.string   "year"
+    t.string   "rated"
+    t.string   "released"
+    t.string   "runtime"
+    t.string   "genre"
+    t.string   "director"
+    t.string   "writer"
+    t.string   "actors"
+    t.string   "plot"
+    t.string   "language"
+    t.string   "country"
+    t.string   "awards"
+    t.string   "poster"
+    t.string   "metascore"
+    t.string   "imdb_rating"
+    t.string   "imdb_ID"
+    t.string   "type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "recommendations_users", id: false, force: :cascade do |t|
+    t.integer "user_id",           null: false
+    t.integer "recommendation_id", null: false
+  end
+
+  add_index "recommendations_users", ["recommendation_id", "user_id"], name: "index_recommendations_users_on_recommendation_id_and_user_id", using: :btree
+  add_index "recommendations_users", ["user_id", "recommendation_id"], name: "index_recommendations_users_on_user_id_and_recommendation_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

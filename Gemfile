@@ -22,6 +22,7 @@ gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'web-console'
+  gem 'spring-commands-rspec'
   gem 'simplecov', require: false, group: :test
   gem 'rspec-rails'
   gem 'pry'
