@@ -21,6 +21,6 @@ FactoryGirl.define do
     metascore   "84"
     imdb_rating "7.5"
     imdb_ID     "tt1276104"
-    type        "movie"
+    media_type  "movie"
   end
 end

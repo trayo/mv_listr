@@ -13,12 +13,19 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
 
 @import 'nav_bar';
 
 .background-image {
-  background: asset_url('admission.jpg');
+  background: asset_url('admission.jpg') no-repeat center center fixed;
   background-size: cover;
+}
+
+.round {
+  border-radius: 1em;
+}
+
+.text-center {
+  text-align: center;
 }
