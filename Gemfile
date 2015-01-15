@@ -10,7 +10,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',         group: :doc
-gem 'spring',                   group: :development
 gem 'pg'
 gem 'faker'
 gem 'bcrypt', '~> 3.1.7'
@@ -19,11 +18,12 @@ gem 'twilio-ruby'
 gem 'foundation-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'dotenv-rails'
+gem 'spring'
 
 group :development, :test do
-  gem 'dotenv-rails'
-  gem 'web-console'
   gem 'spring-commands-rspec'
+  gem 'web-console'
   gem 'simplecov', require: false, group: :test
   gem 'rspec-rails'
   gem 'pry'

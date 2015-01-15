@@ -1,25 +1,20 @@
 <div class="fixed">
   <nav class="top-bar nav-padding" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name ">
-        <h1><a href="#" class="title" >MV Listr</a></h1>
-      </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    </ul>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="<%= root_path %>" class="title" >MV Listr</a></h1>
+    </li>
+  </ul>
 
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="has-dropdown">
-          <a href="#" class="login">Login</a>
-          <ul class="dropdown">
-            <li><a href="#">Login without Twitter</a></li>
-            <li class="active"><a href="/auth/twitter">Login with Twitter</a></li>
-          </ul>
-        </li>
-      </ul>
+  <section class="top-bar-section">
+  <!-- Right Nav Section -->
+  <ul class="right">
+    <li class="active">
+      <a href="/auth/twitter" class="login">Login with Twitter</a>
+    </li>
+  </ul>
 
-    </section>
+  </section>
   </nav>
 </div>
 
