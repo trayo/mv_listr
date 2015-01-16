@@ -8,6 +8,13 @@ class Seeds
 
   def initialize
     generate_users_and_recommendations
+    generate_recommendations_for_myself
+  end
+
+  def generate_recommendations_for_myself
+    user = User.find_by(uid: "51670500")
+    generate_recommendations(user)
+    puts "Recs made for yo"
   end
 
   def generate_users_and_recommendations
@@ -51,7 +58,7 @@ class Seeds
       language:    "English",
       country:     "USA",
       awards:      "Won #{rand(15)} Oscars. Another #{rand(50)} wins & #{rand(50)} nominations.",
-      poster:      "http://robohash.org/#{rand(10000)}.png?set=set1&size=200x200",
+      poster:      "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX150.jpg",
       metascore:   "#{Random.rand(100)}",
       imdb_rating: "#{random_rating}",
       imdb_ID:     "tt#{random_imdb_id}",
