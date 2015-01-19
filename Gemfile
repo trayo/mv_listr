@@ -23,7 +23,8 @@ gem 'spring'
 
 group :development, :test do
   gem 'spring-commands-rspec'
-  gem 'web-console'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'simplecov', require: false, group: :test
   gem 'rspec-rails'
   gem 'pry'

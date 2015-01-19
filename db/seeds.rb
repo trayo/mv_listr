@@ -12,9 +12,9 @@ class Seeds
   end
 
   def generate_recommendations_for_myself
-    user = User.find_by(uid: "51670500")
+    user = User.create!(user_params("Travis", "51670500"))
     generate_recommendations(user)
-    puts "Recs made for yo"
+    puts "Recs made for myself **Don't forget to remove!!**"
   end
 
   def generate_users_and_recommendations
@@ -35,12 +35,12 @@ class Seeds
     end
   end
 
-  def user_params
-    { name:                     Faker::Name.first_name,
+  def user_params(name = Faker::Name.first_name, uid = "#{random_twitter_uid}")
+    { name:                     name,
       screen_name:              Faker::Internet.user_name,
       provider:                "twitter",
       profile_image_url_https: "http://robohash.org/#{rand(10000)}.png?set=set1&size=200x200",
-      uid:                     "#{random_twitter_uid}"
+      uid:                      uid
     }
   end
 
@@ -50,7 +50,7 @@ class Seeds
       rated:       "#{RATINGS.sample}",
       released:    "#{random_release_date}",
       runtime:     "120 min",
-      genre:       "#{GENRES.sample}",
+      genre:       "#{random_genres}",
       director:    Faker::Name.name,
       writer:      Faker::Name.name,
       actors:      "#{Faker::Name.name}, #{Faker::Name.name}, #{Faker::Name.name}",
@@ -58,7 +58,7 @@ class Seeds
       language:    "English",
       country:     "USA",
       awards:      "Won #{rand(15)} Oscars. Another #{rand(50)} wins & #{rand(50)} nominations.",
-      poster:      "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX150.jpg",
+      poster:      "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
       metascore:   "#{Random.rand(100)}",
       imdb_rating: "#{random_rating}",
       imdb_ID:     "tt#{random_imdb_id}",
@@ -88,6 +88,10 @@ class Seeds
 
   def random_imdb_id
     rand(1_000_000..9_999_999)
+  end
+
+  def random_genres
+    GENRES.sample(rand(1..3)).join(", ")
   end
 end
 

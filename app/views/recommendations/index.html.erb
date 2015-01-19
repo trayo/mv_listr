@@ -5,13 +5,9 @@
 </div>
 
 <% @recommendations.each do |recommendation| %>
-  <div class="row small-collapse">
+  <div class="row">
     <div class="small-10 small-centered columns panel round">
-      <%= image_tag(recommendation.poster) %>
-      <div class="small-9 columns right">
-        <%= "#{recommendation.title}" %>
-        <%= "(#{recommendation.year})" %>
-      </div>
+      <%= render partial: "shared/recommendation", locals: {recommendation: recommendation} %>
     </div>
   </div>
 <% end %>
