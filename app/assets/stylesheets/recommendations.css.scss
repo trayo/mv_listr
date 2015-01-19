@@ -1,0 +1,19 @@
+// Place all the styles related to the Recommendations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.movie-title {
+  padding-right: 5px;
+  font-size: xx-large;
+}
+
+.movie-rating {
+  border-style: groove;
+  padding: 0px 3px 0px 3px;
+}
+
+.line-separator {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #999;
+}

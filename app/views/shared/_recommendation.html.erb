@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="large-10 large-push-2 columns">
+    <ul style="list-style-type: none">
+      <li>
+        <span class="movie-title"><%= recommendation.title %></span>
+        <%= "(#{recommendation.year})" %>
+      </li>
+      <li>
+        <span class="movie-rating"><%= recommendation.rated %></span>
+        <%= recommendation.runtime %>
+        &nbsp; - &nbsp;
+        <%= recommendation.genre.gsub(",", " | ") %>
+        &nbsp; - &nbsp;
+        <%= recommendation.released %>
+      </li>
+      <div class="line-separator"></div>
+      <li>
+        <%= recommendation.plot %>
+      </li>
+    </ul>
+  </div>
+  <div class="large-2 large-pull-10 columns">
+    <span><%= image_tag(recommendation.poster) %></span>
+  </div>
+</div>
