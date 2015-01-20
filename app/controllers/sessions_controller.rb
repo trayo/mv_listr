@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
     redirect_to recommendations_path
   end
 
+  def destroy
+    session.clear
+    redirect_to root_path, notice: 'Logged out'
+  end
+
   protected
 
   def auth_data

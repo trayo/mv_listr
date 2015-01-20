@@ -2,17 +2,20 @@
   <nav class="top-bar nav-padding" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
-      <h1><a href="<%= root_path %>" class="title round-button" >MV Listr</a></h1>
+      <h1><%= link_to "MV Listr", root_path, class: "title round-button" %></h1>
     </li>
   </ul>
 
   <section class="top-bar-section">
   <ul class="right">
     <li class="active">
-      <a href="/auth/twitter" class="login">Login with Twitter</a>
+    <% unless current_user %>
+      <%= link_to "Login with Twitter", auth_twitter_path, class: "login" %>
+    <% else %>
+      <%= link_to "Sign out", logout_path, method: :delete, class: "login" %>
+    <% end %>
     </li>
   </ul>
-
   </section>
   </nav>
 </div>
