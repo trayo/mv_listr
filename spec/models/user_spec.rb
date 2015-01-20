@@ -12,9 +12,10 @@ RSpec.describe User, :type => :model do
     it 'can find by auth params' do
       auth_data = {
         'provider' => 'twitter',
-        'info' => {'screen_name' => 'omgTrevor',
+        'info' => {'nickname' => 'omgTrevor',
                    'name' => 'Trevor'},
-        'uid' => '10011001'
+        'uid' => '10011001',
+        'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
       }
 
       user = create(:user, uid: "10011001")

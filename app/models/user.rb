@@ -4,7 +4,18 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_auth(auth_data)
     user = User.where(uid: auth_data["uid"]).first_or_create
     user.tap do |u|
-      u.update_attributes(name: auth_data["info"]["name"], screen_name: auth_data["info"]["screen_name"])
+      u.update_attributes(user_params(auth_data))
     end
+  end
+
+  protected
+
+  def self.user_params(auth_data)
+    { name: auth_data["info"]["name"],
+      screen_name: auth_data["info"]["nickname"],
+      provider: auth_data["provider"],
+      profile_image_url_https: auth_data["extra"]["raw_info"]["profile_image_url_https"],
+      uid: auth_data["uid"]
+    }
   end
 end
