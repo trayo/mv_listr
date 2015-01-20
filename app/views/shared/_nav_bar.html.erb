@@ -8,13 +8,16 @@
 
   <section class="top-bar-section">
   <ul class="right">
-    <li class="active">
-    <% unless current_user %>
-      <%= link_to "Login with Twitter", auth_twitter_path, class: "login" %>
+    <% if current_user %>
+      <li><%= link_to "My Top Recommendations", recommendations_path %></li>
+      <li class="active">
+        <%= link_to "Sign out", logout_path, method: :delete, class: "right-side" %>
+      </li>
     <% else %>
-      <%= link_to "Sign out", logout_path, method: :delete, class: "login" %>
+      <li class="active">
+        <%= link_to "Login with Twitter", auth_twitter_path, class: "right-side" %>
+      </li>
     <% end %>
-    </li>
   </ul>
   </section>
   </nav>
