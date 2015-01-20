@@ -4,16 +4,20 @@ RSpec.describe SessionsController, :type => :controller do
   describe 'omniauth' do
     let(:auth_data) do
       { 'provider' => 'twitter',
-        'info' => {'name' => 'Alice Smith'},
-        'uid' => 'abc123'
+        'info' => {'name' => 'Alice Smith',
+                   'nickname' => 'asmith'},
+        'uid' => 'abc123',
+        'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
       }
     end
 
     it "logs in a new user" do
       @request.env["omniauth.auth"] = {
         'provider' => 'twitter',
-        'info' => {'name' => 'Alice Smith'},
-        'uid' => 'abc123'
+        'info' => {'name' => 'Alice Smith',
+                   'nickname' => 'asmith'},
+        'uid' => 'abc123',
+        'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
       }
 
       post :create
@@ -25,8 +29,10 @@ RSpec.describe SessionsController, :type => :controller do
     it "logs in an existing user" do
       @request.env["omniauth.auth"] = {
         'provider' => 'twitter',
-        'info' => {'name' => 'Bob Jones'},
-        'uid' => 'xyz456'
+        'info' => {'name' => 'Bob Jones',
+                   'nickname' => 'bjones'},
+        'uid' => 'xyz456',
+        'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
       }
       user = create(:user, uid: "xyz456")
 
