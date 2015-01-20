@@ -9,7 +9,9 @@
   <section class="top-bar-section">
   <ul class="right">
     <% if current_user %>
-      <li><%= link_to "My Top Recommendations", recommendations_path %></li>
+      <li class="background-transparent">
+        <%= link_to "My Top Recommendations", recommendations_path, class: "right-side background-transparent" %>
+      </li>
       <li class="active">
         <%= link_to "Sign out", logout_path, method: :delete, class: "right-side" %>
       </li>
