@@ -14,3 +14,5 @@ test:
 production:
   <<: *default
   database: mv_listr_production
+  username: mv_listr
+  password: <%= ENV["DATABASE_PASSWORD"] %>
