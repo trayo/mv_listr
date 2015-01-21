@@ -1,5 +1,7 @@
 class Recommendation < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :user_recommendations
+  has_many :users, through: :user_recommendations
+
   validates :title, :year, :rated, :released,
             :runtime, :genre, :director, :writer,
             :actors, :plot, :language, :country,

@@ -24,4 +24,15 @@ RSpec.describe User, :type => :model do
       expect(user_found).to eq(user)
     end
   end
+
+  describe 'relationships' do
+    it 'has a recommendation' do
+      recommendation = build(:recommendation, id: 1, title: "Looper")
+      user = build(:user, id: 1)
+
+      user.recommendations << recommendation
+
+      expect(user.recommendations.first.title).to eq("Looper")
+    end
+  end
 end

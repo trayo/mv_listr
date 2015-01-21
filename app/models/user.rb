@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :recommendations
+  has_many :user_recommendations
+  has_many :recommendations, through: :user_recommendations
 
   def self.find_or_create_by_auth(auth_data)
     user = User.where(uid: auth_data["uid"]).first_or_create
@@ -13,9 +14,9 @@ class User < ActiveRecord::Base
   def self.user_params(auth_data)
     { name: auth_data["info"]["name"],
       screen_name: auth_data["info"]["nickname"],
+      uid: auth_data["uid"],
       provider: auth_data["provider"],
-      profile_image_url_https: auth_data["extra"]["raw_info"]["profile_image_url_https"],
-      uid: auth_data["uid"]
+      profile_image: auth_data["extra"]["raw_info"]["profile_image_url_https"]
     }
   end
 end
