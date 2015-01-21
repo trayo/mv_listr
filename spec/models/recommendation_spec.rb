@@ -18,15 +18,4 @@ RSpec.describe Recommendation, :type => :model do
       expect(recommendation).to_not be_valid
     end
   end
-
-  describe 'relationships' do
-    it 'has a recommendation' do
-      recommendation = build(:recommendation, title: "Looper")
-      user = build(:user)
-
-      user.recommendations << recommendation
-
-      expect(user.recommendations.first.title).to eq("Looper")
-    end
-  end
 end

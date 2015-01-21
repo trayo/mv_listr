@@ -18,7 +18,7 @@ class CreateRecommendations < ActiveRecord::Migration
       t.string :metascore
       t.string :imdb_rating
       t.string :imdb_ID
-      t.string :type
+      t.string :media_type
 
       t.timestamps null: false
     end

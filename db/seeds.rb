@@ -36,11 +36,11 @@ class Seeds
   end
 
   def user_params(name = Faker::Name.first_name, uid = "#{random_twitter_uid}")
-    { name:                     name,
-      screen_name:              Faker::Internet.user_name,
-      provider:                "twitter",
-      profile_image_url_https: "http://robohash.org/#{rand(10000)}.png?set=set1&size=200x200",
-      uid:                      uid
+    { name:          name,
+      screen_name:   Faker::Internet.user_name,
+      provider:      "twitter",
+      profile_image: "http://robohash.org/#{rand(10000)}.png?set=set1&size=200x200",
+      uid:           uid
     }
   end
 

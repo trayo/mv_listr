@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115221951) do
+ActiveRecord::Schema.define(version: 20150113192331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,22 +39,22 @@ ActiveRecord::Schema.define(version: 20150115221951) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "recommendations_users", id: false, force: :cascade do |t|
-    t.integer "user_id",           null: false
-    t.integer "recommendation_id", null: false
+  create_table "user_recommendations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recommendation_id"
+    t.integer  "count",             default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
-
-  add_index "recommendations_users", ["recommendation_id", "user_id"], name: "index_recommendations_users_on_recommendation_id_and_user_id", using: :btree
-  add_index "recommendations_users", ["user_id", "recommendation_id"], name: "index_recommendations_users_on_user_id_and_recommendation_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.string   "screen_name"
-    t.string   "provider"
-    t.string   "profile_image_url_https"
     t.string   "uid"
+    t.string   "provider"
+    t.string   "profile_image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
