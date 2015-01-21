@@ -2,12 +2,14 @@ class OmdbService
   attr_reader :connection
 
   def initialize
-    @connection = Faraday.new(url: "http://www.omdbapi.com/?")
+    @connection = Faraday.new(url: "http://omdbapi.com/")
   end
 
-  def movie(title, year = "")
-    parse(connection.get("t=#{title}&y=#{year}&plot=short&r=json"))
+  def media(title, media_type, year)
+    parse(connection.get("?t=#{title}&type=#{media_type}&y=#{year}&plot=short&r=json"))
   end
+
+  private
 
   def parse(response)
     JSON.parse(response.body)
