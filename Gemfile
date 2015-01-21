@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'spring'
+gem 'faraday'
 
 group :development, :test do
   gem 'spring-commands-rspec'
