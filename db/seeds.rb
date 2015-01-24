@@ -8,13 +8,6 @@ class Seeds
 
   def initialize
     generate_users_and_recommendations
-    generate_recommendations_for_myself
-  end
-
-  def generate_recommendations_for_myself
-    user = User.create!(user_params("Travis", "51670500"))
-    generate_recommendations(user)
-    puts "Recs made for myself **Don't forget to remove!!**"
   end
 
   def generate_users_and_recommendations
