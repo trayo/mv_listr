@@ -10,7 +10,13 @@ class RecommendationParser
     data.each_with_index do |pairs, i|
       returned_hash["#{RECOMMENDATION_ATTRIBUTES[i]}"] = pairs.second
     end
+    swap_imdb_poster_with_omdb(returned_hash)
     returned_hash
+  end
+
+  def self.swap_imdb_poster_with_omdb(returned_hash)
+    imdb_id = returned_hash["imdb_ID"]
+    returned_hash["poster"] = "http://img.omdbapi.com/?i=#{imdb_id}&apikey=c2505740"
   end
 end
 
