@@ -1,29 +1,43 @@
 <div class="fixed">
   <nav class="top-bar nav-padding color-and-opacity" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to "MV Listr", root_path, class: "title round-button" %></h1>
-    </li>
-  </ul>
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "MV Listr", root_path, class: "title round-button" %></h1>
+      </li>
+    </ul>
 
-  <section class="top-bar-section">
-  <ul class="right">
+    <section class="top-bar-section">
     <% if current_user %>
-      <li class="background-transparent">
-        <%= link_to "My Top Recommendations", recommendations_path, class: "right-side background-transparent" %>
-      </li>
-      <li class="active">
-        <%= link_to "Sign out", logout_path, method: :delete, class: "right-side" %>
-      </li>
-    <% else %>
-      <li class="active">
-        <%= link_to "Login with Twitter", auth_twitter_path, class: "right-side" %>
-      </li>
+      <ul class="left">
+        <li class="has-form background-transparent">
+          <%= form_tag recommendations_path, method: "post" do %>
+            <div class="row collapse">
+              <div class="small-7 columns">
+                <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+              </div>
+              <div class="small-5 columns">
+                <%= submit_tag "Search", class: "font-position secondary button"  %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      </ul>
     <% end %>
-  </ul>
-  </section>
+
+      <ul class="right">
+        <% if current_user %>
+          <li class="background-transparent">
+            <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
+          </li>
+          <li class="active">
+            <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+          </li>
+        <% else %>
+          <li class="active">
+            <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
   </nav>
 </div>
-
-<br>
-<br>

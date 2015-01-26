@@ -5,7 +5,6 @@
 ### To get started visit [MV Listr](www.mvlistr.com) and sign in with Twitter.
 
 ***
-
 ### What is MV Listr?
 
 MV Listr is an app that will keep track of movie recommendations
@@ -19,7 +18,6 @@ The purpose of the app is to build a solo project for Turing School of
 Software and Design that is capable of consuming an API.
 
 ***
-
 ### Setup
 
 1. Clone MV Listr to your local machine with: `git clone https://github.com/trayo/mv_listr.git`
@@ -31,7 +29,6 @@ Software and Design that is capable of consuming an API.
 1. Go to `localhost:3000`
 
 ***
-
 ### Testing
 
 Run `rspec`

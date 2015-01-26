@@ -16,11 +16,23 @@ class Recommendation < ActiveRecord::Base
     if Recommendation.exists?(title: title)
       Recommendation.find_by(title: title)
     else
-      _build_recommendation(service.media(title, media_type, year))
+      request = service.media(title, media_type, year)
+
+      if movie_found?(request)
+        _build_recommendation(request)
+      else
+        request["Error"]
+      end
     end
   end
 
   def self._build_recommendation(data)
     self.create!(RecommendationParser.clean_up(data))
+  end
+
+  private
+
+  def self.movie_found?(request)
+    request["Response"] != "False"
   end
 end

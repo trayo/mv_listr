@@ -13,7 +13,7 @@
   border-radius: 0.1em;
 }
 
-.right li .right-side {
+.right li .round-button {
   font-size: 1em;
   border-radius: 0.3em;
 }
@@ -32,3 +32,10 @@
 .background-transparent {
   background: transparent !important;
 }
+
+.has-form .font-position {
+  color: black;
+  font-weight: bold;
+  padding: 0.1em 1.3em;
+}
+
