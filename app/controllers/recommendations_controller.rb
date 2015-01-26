@@ -13,12 +13,12 @@ class RecommendationsController < ApplicationController
       @recommendation = Recommendation.find_or_create_media(params["search"])
       if recommendation_is_a_movie?
         current_user.recommendations << @recommendation
-        redirect_to recommendation_path, notice: "Movie found!"
+        redirect_to recommendations_path, notice: "Movie found!"
       else
-        redirect_to recommendation_path, notice: "Movie not found!"
+        redirect_to recommendations_path, notice: "Movie not found!"
       end
     else
-      redirect_to recommendation_path, notice: "Search was empty."
+      redirect_to recommendations_path, notice: "Search was empty."
     end
   end
 
