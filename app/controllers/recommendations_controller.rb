@@ -11,8 +11,7 @@ class RecommendationsController < ApplicationController
   def create
     unless params["search"].empty?
       @recommendation = Recommendation.find_or_create_media(params["search"])
-
-      if found_a_movie?
+      if recommendation_is_a_movie?
         current_user.recommendations << @recommendation
         redirect_to :back, notice: "Movie found!"
       else
@@ -25,7 +24,7 @@ class RecommendationsController < ApplicationController
 
   private
 
-  def found_a_movie?
+  def recommendation_is_a_movie?
     @recommendation.class.to_s != "String"
   end
 end

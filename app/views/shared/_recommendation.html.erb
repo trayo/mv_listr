@@ -20,6 +20,8 @@
     </ul>
   </div>
   <div class="large-2 large-pull-10 columns">
-    <span><%= image_tag(recommendation.poster) %></span>
+    <% cache do %>
+      <span><%= image_tag(recommendation.poster) %></span>
+    <% end %>
   </div>
 </div>
