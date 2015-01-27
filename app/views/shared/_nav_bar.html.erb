@@ -67,18 +67,20 @@
       </ul>
 
       <ul class="left">
-        <li class="has-form">
-          <%= form_tag recommendations_path, method: "post" do %>
-            <div class="row collapse">
-              <div class="small-7 columns">
-                <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+        <% if current_user %>
+          <li class="has-form">
+            <%= form_tag recommendations_path, method: "post" do %>
+              <div class="row collapse">
+                <div class="small-7 columns">
+                  <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+                </div>
+                <div class="small-5 columns">
+                  <%= submit_tag "Search", class: "font-position-small secondary button"  %>
+                </div>
               </div>
-              <div class="small-5 columns">
-                <%= submit_tag "Search", class: "font-position-small secondary button"  %>
-              </div>
-            </div>
-          <% end %>
-        </li>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </section>
   </nav>
