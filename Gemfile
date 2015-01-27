@@ -21,6 +21,7 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'spring'
 gem 'faraday'
+gem 'webmock'
 
 group :development, :test do
   gem 'spring-commands-rspec'
@@ -34,4 +35,5 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
+  gem 'vcr'
 end

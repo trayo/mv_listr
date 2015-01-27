@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://omdbapi.com/?plot=short&r=json&t=inception&type=&y=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=1066
+      Content-Type:
+      - text/html; charset=utf-8
+      Expires:
+      - Tue, 27 Jan 2015 21:18:31 GMT
+      Last-Modified:
+      - Tue, 27 Jan 2015 20:18:31 GMT
+      Vary:
+      - "*"
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Tue, 27 Jan 2015 21:00:44 GMT
+      Content-Length:
+      - '762'
+    body:
+      encoding: UTF-8
+      string: '{"Title":"Inception","Year":"2010","Rated":"PG-13","Released":"16 Jul
+        2010","Runtime":"148 min","Genre":"Action, Mystery, Sci-Fi","Director":"Christopher
+        Nolan","Writer":"Christopher Nolan","Actors":"Leonardo DiCaprio, Joseph Gordon-Levitt,
+        Ellen Page, Tom Hardy","Plot":"A thief who steals corporate secrets through
+        use of dream-sharing technology is given the inverse task of planting an idea
+        into the mind of a CEO.","Language":"English, Japanese, French","Country":"USA,
+        UK","Awards":"Won 4 Oscars. Another 138 wins & 164 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg","Metascore":"74","imdbRating":"8.8","imdbVotes":"1,124,997","imdbID":"tt1375666","Type":"movie","Response":"True"}'
+    http_version: 
+  recorded_at: Tue, 27 Jan 2015 21:00:29 GMT
+recorded_with: VCR 2.9.3

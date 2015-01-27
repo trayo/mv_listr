@@ -4,17 +4,19 @@ RSpec.describe OmdbService do
 
   describe 'validation' do
     it 'has a connection' do
-      omdb = OmdbService.new
+      omdb = OmdbService.new.connection
 
-      expect(omdb.connection.class.to_s).to eq("Faraday::Connection")
+      expect(omdb.url_prefix.to_s).to eq("http://omdbapi.com/")
     end
 
     it 'can find a movie' do
       omdb = OmdbService.new
 
-      result = omdb.media("inception", "", "")
+      VCR.use_cassette "omdb"  do
+        result = omdb.media("inception", "", "")
 
-      expect(result["Title"]).to eq("Inception")
+        expect(result["Title"]).to eq("Inception")
+      end
     end
   end
 end

@@ -21,9 +21,11 @@ RSpec.describe Recommendation, :type => :model do
 
   describe "finding media" do
     it "can find a movie" do
-      movie = Recommendation.find_or_create_media("looper", "movie")
+      VCR.use_cassette "recommendation" do
+        movie = Recommendation.find_or_create_media("looper")
 
-      expect(movie.title).to eq("Looper")
+        expect(movie.title).to eq("Looper")
+      end
     end
 
     it "can find a movie that exists in the database" do
