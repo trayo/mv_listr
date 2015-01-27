@@ -15,8 +15,6 @@
  *= require foundation_and_overrides
  */
 
-@import 'nav_bar';
-
 .background-image {
   background: asset_url('admission.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -30,6 +28,8 @@
   text-align: center;
 }
 
-.flash-font-size {
-  font-size: 1.1em
+/* Flash slying */
+.size-and-font {
+  padding: 0em 1.5em;
+  font-size: 1.1em;
 }

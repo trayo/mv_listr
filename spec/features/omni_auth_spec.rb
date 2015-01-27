@@ -34,11 +34,11 @@ RSpec.describe "Twitter and OmniAuth" do
       })
 
       visit root_path
-      click_link "Login with Twitter"
+      first('.active').click_link("Login with Twitter")
 
       expect(current_path).to eq(recommendations_path)
 
-      click_link "Sign out"
+      first('.active').click_link "Sign out"
       expect(current_path).to eq(root_path)
     end
 

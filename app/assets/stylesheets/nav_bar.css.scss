@@ -13,6 +13,15 @@
   border-radius: 0.1em;
 }
 
+.top-bar .name .title-small {
+  width: 4em;
+  font-family: Impact;
+  font-size: 2.4em;
+  background-color: #d9b82d;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  border-radius: 0.1em;
+}
+
 .right li .round-button {
   font-size: 1em;
   border-radius: 0.3em;
@@ -39,3 +48,9 @@
   padding: 0.1em 1.3em;
 }
 
+.has-form .font-position-small {
+  color: black;
+  font-weight: bold;
+  padding: 0.1em 1.3em;
+  top: initial;
+}
