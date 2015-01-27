@@ -1,36 +1,63 @@
 <div class="fixed">
-  <nav class="top-bar nav-padding color-and-opacity" data-topbar role="navigation">
+  <nav class="top-bar nav-padding color-and-opacity hide-for-small" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
-        <h1><%= link_to "MV Listr", root_path, class: "title round-button" %></h1>
+        <h1><%= link_to "MV Listr", root_path, class: "title" %></h1>
       </li>
     </ul>
 
     <section class="top-bar-section">
-    <% if current_user %>
-      <ul class="left">
-        <li class="has-form background-transparent">
-          <%= form_tag recommendations_path, method: "post" do %>
-            <div class="row collapse">
-              <div class="small-7 columns">
-                <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+      <% if current_user %>
+        <ul class="left">
+          <li class="has-form background-transparent">
+            <%= form_tag recommendations_path, method: "post" do %>
+              <div class="row collapse">
+                <div class="small-7 columns">
+                  <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+                </div>
+                <div class="small-5 columns">
+                  <%= submit_tag "Search", class: "font-position secondary button"  %>
+                </div>
               </div>
-              <div class="small-5 columns">
-                <%= submit_tag "Search", class: "font-position secondary button"  %>
-              </div>
-            </div>
-          <% end %>
-        </li>
-      </ul>
-    <% end %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
 
       <ul class="right">
         <% if current_user %>
           <li class="background-transparent">
-            <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
+          <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
           </li>
           <li class="active">
+          <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+          </li>
+        <% else %>
+          <li class="active">
+          <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+
+  <nav class="top-bar show-for-small" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "MV Listr", root_path, class: "title-small" %></h1>
+      </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if current_user %>
+          <li class="active">
             <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+          </li>
+          <li>
+            <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
           </li>
         <% else %>
           <li class="active">
@@ -38,7 +65,23 @@
           </li>
         <% end %>
       </ul>
+
+      <ul class="left">
+        <li class="has-form">
+          <%= form_tag recommendations_path, method: "post" do %>
+            <div class="row collapse">
+              <div class="small-7 columns">
+                <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+              </div>
+              <div class="small-5 columns">
+                <%= submit_tag "Search", class: "font-position-small secondary button"  %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      </ul>
     </section>
   </nav>
- <%= render partial: "shared/flash" %>
+
+  <%= render partial: "shared/flash" %>
 </div>
