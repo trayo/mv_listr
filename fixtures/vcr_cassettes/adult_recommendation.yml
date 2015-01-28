@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://omdbapi.com/?plot=short&r=json&t=blade%202&type=movie&y=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=3249
+      Content-Type:
+      - text/html; charset=utf-8
+      Expires:
+      - Wed, 28 Jan 2015 21:14:25 GMT
+      Last-Modified:
+      - Wed, 28 Jan 2015 20:14:25 GMT
+      Vary:
+      - "*"
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Wed, 28 Jan 2015 20:20:15 GMT
+      Content-Length:
+      - '672'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJUaXRsZSI6IkFuZ2VsIEJsYWRlIDIiLCJZZWFyIjoiMjAwMSIsIlJhdGVk
+        IjoiVW5yYXRlZCIsIlJlbGVhc2VkIjoiMDUgSnVsIDIwMDIiLCJSdW50aW1l
+        IjoiNDUgbWluIiwiR2VucmUiOiJBbmltYXRpb24sIEFkdWx0LCBBZHZlbnR1
+        cmUiLCJEaXJlY3RvciI6Ik1hc2FtaSDDlGJhcmkiLCJXcml0ZXIiOiJKaW4g
+        S29nYSAoc2NyZWVucGxheSksIE1hc2FtaSDDlGJhcmkgKGNyZWF0b3IpIiwi
+        QWN0b3JzIjoiQnJpZ2l0dGUgRmxhdiwgSG9sbHkgQm9iYml0LCBCcmFuZHkg
+        RGVsbWFyLCBDYXJyaWUgS2VyYW5lbiIsIlBsb3QiOiJJbiB0aGUgbmVhciBm
+        dXR1cmUsIHRoZSBlYXJ0aCBpcyBjb3ZlcmVkIGluIGEgY2hlbWljYWwgc21v
+        ZyBhbmQgRGFyayBNb3RoZXIsIGV2aWwgdmlsbGFpbmVzcywgbGVhZHMgYSBz
+        ZWNyZXQgb3JnYW5pemF0aW9uIGRldm90ZWQgdG8gd29ybGQgZG9taW5hdGlv
+        bi4gQnV0IHRoZXJlIGlzIGEgbWFza2VkIGhlcm9pbmUgbmFtZWQgLi4uIiwi
+        TGFuZ3VhZ2UiOiJKYXBhbmVzZSIsIkNvdW50cnkiOiJKYXBhbiIsIkF3YXJk
+        cyI6Ik4vQSIsIlBvc3RlciI6Ik4vQSIsIk1ldGFzY29yZSI6Ik4vQSIsImlt
+        ZGJSYXRpbmciOiI3LjAiLCJpbWRiVm90ZXMiOiIxNyIsImltZGJJRCI6InR0
+        MDQ3ODQ0NiIsIlR5cGUiOiJtb3ZpZSIsIlJlc3BvbnNlIjoiVHJ1ZSJ9
+    http_version: 
+  recorded_at: Wed, 28 Jan 2015 20:20:01 GMT
+recorded_with: VCR 2.9.3

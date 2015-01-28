@@ -26,8 +26,12 @@ class Recommendation < ActiveRecord::Base
 
   private
 
-  def self.movie_found?(request)
-    request["Response"] != "False"
+  def self.movie_found?
+    @request["Response"] != "False"
+  end
+
+  def self.not_adult_content?
+    !@request["Genre"].include?("Adult")
   end
 
   def self.not_matching_movie_in_database?(title)
@@ -35,12 +39,12 @@ class Recommendation < ActiveRecord::Base
   end
 
   def self.make_a_request_and_build_recommendation(title, media_type, year)
-    request = service.media(title, media_type, year)
+    @request = service.media(title, media_type, year)
 
-    if movie_found?(request)
-      _build_recommendation(request)
+    if movie_found? && not_adult_content?
+      _build_recommendation(@request)
     else
-      request["Error"]
+      return @request["Error"] || "Adult movie found."
     end
   end
 end
