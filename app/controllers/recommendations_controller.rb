@@ -11,12 +11,7 @@ class RecommendationsController < ApplicationController
   def create
     unless params["search"].empty?
       @recommendation = Recommendation.find_or_create_media(params["search"])
-      if recommendation_is_a_movie?
-        current_user.recommendations << @recommendation
-        redirect_to recommendations_path, notice: "Movie found!"
-      else
-        redirect_to recommendations_path, notice: "Movie not found!"
-      end
+      assign_recommendation_to_user
     else
       redirect_to recommendations_path, notice: "Search was empty."
     end
@@ -26,5 +21,22 @@ class RecommendationsController < ApplicationController
 
   def recommendation_is_a_movie?
     @recommendation.class.to_s != "String"
+  end
+
+
+  def user_already_has_recommendation
+    current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
+  end
+
+  def assign_recommendation_to_user
+    case
+    when recommendation_is_a_movie? && user_already_has_recommendation
+      redirect_to recommendations_path, notice: "That movie is already on this list."
+    when recommendation_is_a_movie?
+      current_user.recommendations << @recommendation
+      redirect_to recommendations_path, notice: "Movie found!"
+    else
+      redirect_to recommendations_path, notice: "Movie not found!"
+    end
   end
 end
