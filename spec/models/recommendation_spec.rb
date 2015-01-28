@@ -35,4 +35,14 @@ RSpec.describe Recommendation, :type => :model do
       expect(movie.title).to eq("inception")
     end
   end
+
+  describe "filtering content" do
+    it 'filters adult content' do
+      VCR.use_cassette "adult recommendation" do
+        movie = Recommendation.find_or_create_media("blade 2")
+
+        expect(movie).to eq("Adult movie found.")
+      end
+    end
+  end
 end

@@ -9,7 +9,7 @@
 
 <% if @recommendations.empty? %>
   <div class="row">
-    <div class="small-10 small-centered columns panel round">
+    <div class="small-12 small-centered columns panel round">
       <h3>No recommendations found.</h3>
       <h3>Add some recommendations using the search bar above!</h3>
     </div>
@@ -17,7 +17,7 @@
 <% else %>
   <% @recommendations.each do |recommendation| %>
     <div class="row">
-      <div class="small-10 small-centered columns panel round">
+      <div class="small-12 small-centered columns panel round">
         <%= render partial: "shared/recommendation", locals: {recommendation: recommendation} %>
       </div>
     </div>
