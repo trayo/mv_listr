@@ -13,16 +13,10 @@ class Recommendation < ActiveRecord::Base
   end
 
   def self.find_or_create_media(title, media_type = "movie", year = "")
-    if Recommendation.exists?(title: title)
-      Recommendation.find_by(title: title)
+    if not_matching_movie_in_database?(title)
+      make_a_request_and_build_recommendation(title, media_type, year)
     else
-      request = service.media(title, media_type, year)
-
-      if movie_found?(request)
-        _build_recommendation(request)
-      else
-        request["Error"]
-      end
+      Recommendation.find_by("title LIKE ?", "%#{title.downcase}%")
     end
   end
 
@@ -34,5 +28,19 @@ class Recommendation < ActiveRecord::Base
 
   def self.movie_found?(request)
     request["Response"] != "False"
+  end
+
+  def self.not_matching_movie_in_database?(title)
+    Recommendation.where("title LIKE ?", "%#{title.downcase}%").empty?
+  end
+
+  def self.make_a_request_and_build_recommendation(title, media_type, year)
+    request = service.media(title, media_type, year)
+
+    if movie_found?(request)
+      _build_recommendation(request)
+    else
+      request["Error"]
+    end
   end
 end

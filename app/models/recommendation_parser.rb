@@ -1,22 +1,32 @@
 class RecommendationParser
 
-  RECOMMENDATION_ATTRIBUTES = %w(title year rated released runtime genre
-                                 director writer actors plot language
-                                 country awards poster metascore imdb_rating
-                                 imdb_votes imdb_ID media_type response)
+  RECOMMENDATION_ATTRIBUTES = { "Title" => "title",         "Year"  => "year",
+                                "Rated" => "rated",         "Released" => "released",
+                                "Runtime" => "runtime",     "Genre" => "genre",
+                                "Director" => "director",   "Writer" => "writer",
+                                "Actors" => "actors",       "Plot" => "plot",
+                                "Language" => "language",   "Country" => "country",
+                                "Awards" => "awards",       "Poster" => "poster",
+                                "Metascore" => "metascore", "imdbRating" => "imdb_rating",
+                                "imdbVotes" => "imdb_votes", "imdbID" => "imdb_ID",
+                                "Type" => "media_type",     "Response" => "response"
+                              }
+
 
   def self.clean_up(data)
-    returned_hash = {}
-    data.each_with_index do |pairs, i|
-      returned_hash["#{RECOMMENDATION_ATTRIBUTES[i]}"] = pairs.second
+    RECOMMENDATION_ATTRIBUTES.each do |old_key, new_key|
+      data[new_key] = data.delete old_key
     end
-    swap_imdb_poster_with_omdb(returned_hash)
-    returned_hash
+    data["title"].downcase!
+    swap_imdb_poster_with_omdb(data)
+    data
   end
 
-  def self.swap_imdb_poster_with_omdb(returned_hash)
-    imdb_id = returned_hash["imdb_ID"]
-    returned_hash["poster"] = "http://img.omdbapi.com/?i=#{imdb_id}&apikey=c2505740"
+  private
+
+  def self.swap_imdb_poster_with_omdb(data)
+    imdb_id = data["imdb_ID"]
+    data["poster"] = "http://img.omdbapi.com/?i=#{imdb_id}&apikey=c2505740"
   end
 end
 
