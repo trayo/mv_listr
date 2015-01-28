@@ -21,7 +21,7 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'spring'
 gem 'faraday'
-gem 'webmock'
+gem 'webmock',                   group: :test
 
 group :development, :test do
   gem 'spring-commands-rspec'
