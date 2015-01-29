@@ -17,10 +17,11 @@ class User < ActiveRecord::Base
   protected
 
   def self.user_params(auth_data)
-    { name: auth_data["info"]["name"],
-      screen_name: auth_data["info"]["nickname"],
-      uid: auth_data["uid"],
-      provider: auth_data["provider"],
+    {
+      name:          auth_data["info"]["name"],
+      screen_name:   auth_data["info"]["nickname"],
+      uid:           auth_data["uid"],
+      provider:      auth_data["provider"],
       profile_image: auth_data["extra"]["raw_info"]["profile_image_url_https"]
     }
   end

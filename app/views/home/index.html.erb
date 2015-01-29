@@ -10,8 +10,10 @@
       Our website has the ability to search IMDB and list movies, or TV
       shows that your friends have recommended to you.
     </h3>
-    <h3>
-      <%= link_to "Login with Twitter to get started.", auth_twitter_path %>
-    </h3>
+    <% unless current_user %>
+      <h3>
+        <%= link_to "Login with Twitter to get started.", auth_twitter_path %>
+      </h3>
+    <% end %>
   </div>
 </div>

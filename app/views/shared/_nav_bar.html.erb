@@ -27,14 +27,17 @@
       <ul class="right">
         <% if current_user %>
           <li class="background-transparent">
-          <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
+            <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
+          </li>
+          <li class="background-transparent">
+            <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
           </li>
           <li class="active">
-          <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+            <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
           </li>
         <% else %>
           <li class="active">
-          <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
+            <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
           </li>
         <% end %>
       </ul>
