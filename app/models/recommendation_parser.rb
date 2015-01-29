@@ -12,21 +12,26 @@ class RecommendationParser
                                 "Type" => "media_type",     "Response" => "response"
                               }
 
+  def initialize(recommendation_json_from_omdb)
+    @recommendation_json_from_omdb = recommendation_json_from_omdb
+  end
 
-  def self.clean_up(data)
+  def clean_up
     RECOMMENDATION_ATTRIBUTES.each do |old_key, new_key|
-      data[new_key] = data.delete old_key
+      recommendation_json_from_omdb[new_key] = recommendation_json_from_omdb.delete old_key
     end
-    data["title"].downcase!
-    swap_imdb_poster_with_omdb(data)
-    data
+    recommendation_json_from_omdb["title"].downcase!
+    swap_imdb_poster_with_omdb
+    recommendation_json_from_omdb
   end
 
   private
 
-  def self.swap_imdb_poster_with_omdb(data)
-    imdb_id = data["imdb_ID"]
-    data["poster"] = "http://img.omdbapi.com/?i=#{imdb_id}&apikey=c2505740"
+  attr_reader :recommendation_json_from_omdb
+
+  def swap_imdb_poster_with_omdb
+    imdb_id = recommendation_json_from_omdb["imdb_ID"]
+    recommendation_json_from_omdb["poster"] = "http://img.omdbapi.com/?i=#{imdb_id}&apikey=c2505740"
   end
 end
 

@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="large-10 large-push-2 columns">
+  <div class="large-2 columns">
+    <span><%= image_tag(recommendation.poster) %></span>
+  </div>
+  <div class="large-10 columns">
     <ul style="list-style-type: none">
       <li>
         <span class="movie-title"><%= recommendation.title.titleize %></span>
@@ -18,8 +21,5 @@
         <%= recommendation.plot %>
       </li>
     </ul>
-  </div>
-  <div class="large-2 large-pull-10 columns">
-    <span><%= image_tag(recommendation.poster) %></span>
   </div>
 </div>
