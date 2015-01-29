@@ -3,22 +3,21 @@
 
 <div class="row">
   <div class="small-12 columns panel round text-center">
-    <h1>My Recommendations</h1>
+    <h1>My Watched Recommendations</h1>
   </div>
 </div>
 
 <% if @recommendations.empty? %>
   <div class="row">
     <div class="small-12 small-centered columns panel round">
-      <h3>No recommendations found.</h3>
-      <h3>Add some recommendations using the search bar above!</h3>
+      <h3>No watched recommendations found.</h3>
     </div>
   </div>
 <% else %>
   <% @recommendations.each do |recommendation| %>
     <div class="row">
       <div class="small-12 small-centered columns panel round">
-        <%= render partial: "shared/recommendation", locals: {recommendation: recommendation} %>
+        <%= render partial: "shared/watched_recommendation", locals: {recommendation: recommendation} %>
       </div>
     </div>
   <% end %>
