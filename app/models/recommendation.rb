@@ -20,18 +20,18 @@ class Recommendation < ActiveRecord::Base
     end
   end
 
-  def self._build_recommendation(data)
-    self.create!(RecommendationParser.clean_up(data))
+  def self._build_recommendation(request_from_omdb)
+    self.create!(RecommendationParser.new(request_from_omdb).clean_up)
   end
 
   private
 
   def self.movie_found?
-    @request["Response"] != "False"
+    @request_from_omdb["Response"] != "False"
   end
 
   def self.not_adult_content?
-    !@request["Genre"].include?("Adult")
+    !@request_from_omdb["Genre"].include?("Adult")
   end
 
   def self.not_matching_movie_in_database?(title)
@@ -39,12 +39,12 @@ class Recommendation < ActiveRecord::Base
   end
 
   def self.make_a_request_and_build_recommendation(title, media_type, year)
-    @request = service.media(title, media_type, year)
+    @request_from_omdb = service.media(title, media_type, year)
 
     if movie_found? && not_adult_content?
-      _build_recommendation(@request)
+      _build_recommendation(@request_from_omdb)
     else
-      return @request["Error"] || "Adult movie found."
+      return @request_from_omdb["Error"] || "Adult movie found."
     end
   end
 end

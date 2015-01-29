@@ -29,14 +29,14 @@ class RecommendationsController < ApplicationController
   end
 
   def assign_recommendation_to_user
-    case
-    when recommendation_is_a_movie? && user_already_has_recommendation
-      redirect_to recommendations_path, notice: "That movie is already on this list."
-    when recommendation_is_a_movie?
+    if recommendation_is_a_movie? && user_already_has_recommendation
+      notice = "That movie is already on this list."
+    elsif recommendation_is_a_movie?
       current_user.recommendations << @recommendation
-      redirect_to recommendations_path, notice: "Movie found!"
+      notice = "Movie found!"
     else
-      redirect_to recommendations_path, notice: "Movie not found!"
+      notice = "Movie not found!"
     end
+    redirect_to recommendations_path, notice: notice
   end
 end

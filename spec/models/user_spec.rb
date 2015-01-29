@@ -1,13 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  describe 'validations' do
-    it 'is valid' do
-      user = build(:user)
-      expect(user).to be_valid
-    end
-  end
-
+RSpec.describe User do
   describe 'auth' do
     it 'can find by auth params' do
       auth_data = {
@@ -22,17 +15,6 @@ RSpec.describe User, :type => :model do
       user_found = User.find_or_create_by_auth(auth_data)
 
       expect(user_found).to eq(user)
-    end
-  end
-
-  describe 'relationships' do
-    it 'has a recommendation' do
-      recommendation = build(:recommendation, id: 1, title: "Looper")
-      user = build(:user, id: 1)
-
-      user.recommendations << recommendation
-
-      expect(user.recommendations.first.title).to eq("Looper")
     end
   end
 end
