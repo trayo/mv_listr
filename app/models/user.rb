@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def watched_recommendations(status)
+    self.recommendations.joins(:user_recommendations)
+                        .where("user_recommendations.watched = ?", status)
+  end
+
   protected
 
   def self.user_params(auth_data)

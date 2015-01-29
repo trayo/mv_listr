@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/auth/twitter'
-
   get '/auth/:provider/callback', to: 'sessions#create'
 end
