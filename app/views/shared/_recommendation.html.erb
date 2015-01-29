@@ -1,8 +1,8 @@
-<div class="row">
-  <div class="large-2 columns">
+<div class="row collapse">
+  <div class="large-2 small-8 small-centered large-uncentered columns">
     <span><%= image_tag(recommendation.poster) %></span>
   </div>
-  <div class="large-10 columns">
+  <div class="large-10 large-uncentered columns">
     <ul style="list-style-type: none">
       <li>
         <span class="movie-title"><%= recommendation.title.titleize %></span>
@@ -20,6 +20,17 @@
       <li>
         <%= recommendation.plot %>
       </li>
+      <div class="line-separator"></div>
+      <ul class="button-group">
+        <li>
+          <%= button_to('     Watched it', { action: "update", id: recommendation.id },
+                        method: "put", remote: true, class: "watched") %>
+        </li>
+        <li>
+          <%= button_to('       Delete', { action: "destroy", id: recommendation.id },
+                        method: "delete", remote: true, class: "delete") %>
+        </li>
+      </ul>
     </ul>
   </div>
 </div>

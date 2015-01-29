@@ -2,7 +2,7 @@ class RecommendationsController < ApplicationController
 
   def index
     if current_user
-      @recommendations = current_user.recommendations.order(updated_at: :desc)
+      @recommendations = current_user.watched_recommendations(false).order(updated_at: :desc)
     else
       redirect_to root_path, notice: "You must be logged in to access that page."
     end
@@ -15,6 +15,17 @@ class RecommendationsController < ApplicationController
     else
       redirect_to recommendations_path, notice: "Search was empty."
     end
+  end
+
+  def update
+    user_recommendation = UserRecommendation.find_by(user_id: current_user, recommendation_id: params["id"])
+    user_recommendation.update_attributes(watched: true)
+    redirect_to recommendations_path, alert: "Movie updated."
+  end
+
+  def destroy
+    UserRecommendation.find_by(user_id: current_user, recommendation_id: params["id"]).destroy
+    redirect_to recommendations_path, alert: "Movie deleted."
   end
 
   private
@@ -30,13 +41,14 @@ class RecommendationsController < ApplicationController
 
   def assign_recommendation_to_user
     if recommendation_is_a_movie? && user_already_has_recommendation
-      notice = "That movie is already on this list."
+      notice = "That movie has already been added."
     elsif recommendation_is_a_movie?
       current_user.recommendations << @recommendation
-      notice = "Movie found!"
+      alert = "Movie found!"
     else
       notice = "Movie not found!"
     end
-    redirect_to recommendations_path, notice: notice
+    notice ? flash[:notice] = notice : flash[:alert] = alert
+    redirect_to recommendations_path
   end
 end
