@@ -11,7 +11,7 @@ class RecommendationsController < ApplicationController
   def create
     if params["Body"]
       params["search"] = params["Body"]
-      @current_user = User.find_by("phone_number = ?", "+17204770010")
+      @current_user = User.find_by("phone_number = ?", "+16617069773")
     end
 
     unless params["search"].empty?
