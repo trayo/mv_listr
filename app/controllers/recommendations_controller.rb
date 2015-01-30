@@ -9,6 +9,11 @@ class RecommendationsController < ApplicationController
   end
 
   def create
+    if params["Body"]
+      params["search"] = params["Body"]
+      @current_user = User.find_by("phone_number = ?", params["From"])
+    end
+
     unless params["search"].empty?
       @recommendation = Recommendation.find_or_create_media(params["search"])
       assign_recommendation_to_user
@@ -36,15 +41,26 @@ class RecommendationsController < ApplicationController
 
 
   def user_already_has_recommendation
-    current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
+    if @current_user
+      @current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
+    else
+      current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
+    end
   end
 
   def assign_recommendation_to_user
     if recommendation_is_a_movie? && user_already_has_recommendation
       notice = "That movie has already been added."
     elsif recommendation_is_a_movie?
-      current_user.recommendations << @recommendation
-      alert = "Movie found!"
+
+      if @current_user
+        @current_user.recommendations << @recommendation
+        alert = "Movie found!"
+      else
+        current_user.recommendations << @recommendation
+        alert = "Movie found!"
+      end
+
     else
       notice = "Movie not found!"
     end
