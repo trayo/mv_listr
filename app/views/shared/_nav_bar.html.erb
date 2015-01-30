@@ -62,6 +62,9 @@
           <li>
             <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
           </li>
+          <li>
+            <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
+          </li>
         <% else %>
           <li class="active">
             <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
