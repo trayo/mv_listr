@@ -1,30 +1,114 @@
 require 'rails_helper'
 
 RSpec.describe "Searching for media" do
-  describe "finding media" do
-    it "can find a new movie" do
-      VCR.use_cassette "recommendation" do
-        movie = Recommendation.find_or_create_media("looper")
 
-        expect(movie.title).to eq("looper")
-      end
+  feature "finding a movie" do
+    scenario "a user can't go to recommendations page without logging in" do
+      visit "/recommendations"
+
+      expect(page).to have_content("You must be logged in")
     end
 
-    it "can find a movie that exists in the database" do
-      create(:recommendation, title: "inception")
-      movie = Recommendation.find_or_create_media("inception")
+    scenario "a user goes to their recommendations page" do
+      sign_in_via_twitter
 
-      expect(movie.title).to eq("inception")
+      expect(page).to have_content("No recommendations found.")
+    end
+
+    scenario "they can find a new movie" do
+      sign_in_via_twitter
+
+      search_for_the_movie("Looper")
+
+      expect(page).to have_content("Looper (2012)")
+    end
+
+    scenario "they can't send an empty search" do
+      sign_in_via_twitter
+
+      first('input[type="submit"]').click
+
+      expect(page).to have_content("Search was empty.")
+    end
+
+    scenario "it tells them when a movie doesnt exist" do
+      sign_in_via_twitter
+
+      search_for_the_movie("asddfafda")
+
+      expect(page).to have_content("Movie not found!")
+    end
+
+    scenario "searching for the same movie doesn't get added twice" do
+      sign_in_via_twitter
+
+      search_for_the_movie("inception")
+      search_for_the_movie("inception")
+
+      expect(page).to have_content("That movie has already been added.")
     end
   end
 
-  describe "filtering content" do
-    it 'filters adult content' do
-      VCR.use_cassette "adult recommendation" do
-        movie = Recommendation.find_or_create_media("blade 2")
+  feature "marking movies as watched" do
+    scenario "a user can't go to the watched recommendations page without logging in" do
+      visit "/recommendations/watched"
 
-        expect(movie).to eq("Adult movie found.")
-      end
+      expect(page).to have_content("You must be logged in")
+    end
+
+    scenario "a user can mark a movie as watched" do
+      sign_in_via_twitter
+
+      search_for_the_movie("Looper")
+
+      click_button "Watched it"
+      expect(page).to have_content("No recommendations found.")
+
+      visit "/recommendations/watched"
+      expect(page).to have_content("Looper (2012)")
+    end
+  end
+
+  feature "deleting movies" do
+    scenario "a user can delete a movie from their current recommendations" do
+      sign_in_via_twitter
+
+      search_for_the_movie("Looper")
+
+      click_button "Delete"
+      expect(page).to have_content("No recommendations found.")
+    end
+
+    scenario "a user can delete a movie from their watched recommendations" do
+      sign_in_via_twitter
+
+      search_for_the_movie("Looper")
+      click_button "Watched it"
+      visit "/recommendations/watched"
+
+      click_button "Delete"
+      expect(page).to have_content("No watched recommendations found.")
+    end
+  end
+
+  def sign_in_via_twitter
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+      'provider' => 'twitter',
+      'info' => {'name' => 'trevor',
+      'nickname' => 'trevor_is_da_coolest'},
+      'uid' => '123456',
+      'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
+    })
+
+    visit root_path
+    first(".active").click_link("Login with Twitter")
+  end
+
+  def search_for_the_movie(movie)
+    VCR.use_cassette "searching for #{movie}" do
+      fill_in "search_1", with: movie
+      first('input[type="submit"]').click
     end
   end
 end

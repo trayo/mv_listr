@@ -14,11 +14,11 @@ class RecommendationsController < ApplicationController
       @current_user = User.find_by("phone_number = ?", "+16617069773")
     end
 
-    unless params["search"].empty?
-      @recommendation = Recommendation.find_or_create_media(params["search"])
-      assign_recommendation_to_user
-    else
+    if search_params.empty?
       redirect_to recommendations_path, notice: "Search was empty."
+    else
+      @recommendation = Recommendation.find_or_create_media(search_params)
+      assign_recommendation_to_user
     end
   end
 
@@ -34,6 +34,10 @@ class RecommendationsController < ApplicationController
   end
 
   private
+
+  def search_params
+    params["search_1"] || params["search_2"]
+  end
 
   def recommendation_is_a_movie?
     @recommendation.class.to_s != "String"
