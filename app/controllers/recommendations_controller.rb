@@ -55,15 +55,15 @@ class RecommendationsController < ApplicationController
 
       if @current_user
         @current_user.recommendations << @recommendation
-        alert = "Movie found!"
       else
         current_user.recommendations << @recommendation
-        alert = "Movie found!"
       end
+      alert = "Movie found!"
 
     else
       notice = "Movie not found!"
     end
+
     notice ? flash[:notice] = notice : flash[:alert] = alert
     redirect_to recommendations_path
   end
