@@ -50,7 +50,7 @@ RSpec.describe "Searching for media" do
   end
 
   feature "marking movies as watched" do
-    scenario "a user can't go to the watched recommendations page without logging in" do
+    scenario "can't go to the watched page without logging in" do
       visit "/recommendations/watched"
 
       expect(page).to have_content("You must be logged in")
@@ -93,13 +93,15 @@ RSpec.describe "Searching for media" do
 
   def sign_in_via_twitter
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-      'provider' => 'twitter',
-      'info' => {'name' => 'trevor',
-      'nickname' => 'trevor_is_da_coolest'},
-      'uid' => '123456',
-      'extra' => {'raw_info' => {'profile_image_url_https' => 'http://robohash.org/1.png'}}
-    })
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
+      {
+        "provider" => "twitter",
+        "info"     => { "name" => "trevor",
+        "nickname" => "trevor_is_da_coolest" },
+        "uid"      => "123456",
+        "extra"    => { "raw_info" => { "profile_image_url_https" => "http://robohash.org/1.png" } }
+      }
+    )
 
     visit root_path
     first(".active").click_link("Login with Twitter")
