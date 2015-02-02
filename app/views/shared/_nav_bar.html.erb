@@ -13,10 +13,10 @@
             <%= form_tag recommendations_path, method: "post" do %>
               <div class="row collapse">
                 <div class="small-7 columns">
-                  <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+                  <%= text_field_tag "search_1", nil, placeholder: "Add a movie" %>
                 </div>
                 <div class="small-5 columns">
-                  <%= submit_tag "Search", class: "font-position secondary button"  %>
+                  <%= submit_tag "Search", class: "font-position secondary button" %>
                 </div>
               </div>
             <% end %>
@@ -78,7 +78,7 @@
             <%= form_tag recommendations_path, method: "post" do %>
               <div class="row collapse">
                 <div class="small-7 columns">
-                  <%= text_field_tag "search", nil, placeholder: "Add a movie"  %>
+                  <%= text_field_tag "search_2", nil, placeholder: "Add a movie"  %>
                 </div>
                 <div class="small-5 columns">
                   <%= submit_tag "Search", class: "font-position-small secondary button"  %>

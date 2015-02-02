@@ -10,6 +10,6 @@ class WatchedRecommendationsController < ApplicationController
 
   def destroy
     UserRecommendation.find_by(user_id: current_user, recommendation_id: params["id"]).destroy
-    redirect_to watched_recommendations_path, alert: "Movie deleted."
+    redirect_to :back, alert: "Movie deleted."
   end
 end
