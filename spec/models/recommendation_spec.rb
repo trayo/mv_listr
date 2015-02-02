@@ -8,7 +8,7 @@ RSpec.describe Recommendation, :type => :model do
       recommendation.title = nil
       expect(recommendation).to_not be_valid
 
-      recommendation.title = ''
+      recommendation.title = ""
       expect(recommendation).to_not be_valid
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe Recommendation, :type => :model do
   end
 
   describe "filtering content" do
-    it 'filters adult content' do
+    it "filters adult content" do
       VCR.use_cassette "adult recommendation" do
         movie = Recommendation.find_or_create_media("blade 2")
 
