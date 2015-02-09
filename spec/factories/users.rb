@@ -5,5 +5,6 @@ FactoryGirl.define do
     uid           "12345678"
     provider      "twitter"
     profile_image "http://robohash.org/1.png"
+    phone_number  "+15554443333"
   end
 end

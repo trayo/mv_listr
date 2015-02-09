@@ -2,7 +2,7 @@ class WatchedRecommendationsController < ApplicationController
 
   def index
     if current_user
-      @recommendations = current_user.watched_recommendations(true).order(updated_at: :desc)
+      @recommendations = current_user.watched_recommendations(true)
     else
       redirect_to root_path, notice: "You must be logged in to access that page."
     end
