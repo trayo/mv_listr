@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   end
 
   def watched_recommendations(status)
-    self.recommendations.joins(:user_recommendations)
-                        .where("user_recommendations.watched = ?", status)
-                        .order(updated_at: :desc)
+    recommendations.joins(:user_recommendations)
+                   .where("user_recommendations.watched = ?", status)
+                   .order(updated_at: :desc)
   end
 
   protected

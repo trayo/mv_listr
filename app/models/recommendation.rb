@@ -21,7 +21,7 @@ class Recommendation < ActiveRecord::Base
   end
 
   def self._build_recommendation(request_from_omdb)
-    self.create!(RecommendationParser.new(request_from_omdb).clean_up)
+    create!(RecommendationParser.new(request_from_omdb).clean_up)
   end
 
   private
