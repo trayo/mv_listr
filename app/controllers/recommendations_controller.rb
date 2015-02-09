@@ -2,7 +2,7 @@ class RecommendationsController < ApplicationController
   before_action :require_current_user
 
   def index
-    @recommendations = current_user.watched_recommendations(false).order(updated_at: :desc)
+    @recommendations = current_user.watched_recommendations(false)
   end
 
   def create

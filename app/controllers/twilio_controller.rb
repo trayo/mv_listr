@@ -1,12 +1,11 @@
 class TwilioController < ApplicationController
-
   def create
     if User.exists?(phone_number: params["From"])
       @recommendation = Recommendation.find_or_create_media(search_params)
       set_user_using_twilio_phone_number
       assign_recommendation_to_user
     end
-    render :nothing => true, :status => 200
+    render nothing: true, status: 200
   end
 
   private
