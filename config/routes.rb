@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :watched_recommendations, only: [:destroy]
 
+  resources :twilio, only: [:create]
+
   get '/recommendations/watched', to: 'watched_recommendations#index'
   delete '/logout', to: 'sessions#destroy'
 

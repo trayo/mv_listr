@@ -1,19 +1,11 @@
 class RecommendationsController < ApplicationController
+  before_action :require_current_user
 
   def index
-    if current_user
-      @recommendations = current_user.watched_recommendations(false).order(updated_at: :desc)
-    else
-      redirect_to root_path, notice: "You must be logged in to access that page."
-    end
+    @recommendations = current_user.watched_recommendations(false).order(updated_at: :desc)
   end
 
   def create
-    if params["Body"]
-      params["search"] = params["Body"]
-      @current_user = User.find_by("phone_number = ?", "+16617069773")
-    end
-
     if search_params.empty?
       redirect_to recommendations_path, notice: "Search was empty."
     else
@@ -39,31 +31,20 @@ class RecommendationsController < ApplicationController
     params["search_1"] || params["search_2"]
   end
 
-  def recommendation_is_a_movie?
-    @recommendation.class.to_s != "String"
+  def recommendation_was_found?
+    @recommendation != "Movie not found."
   end
 
-
-  def user_already_has_recommendation
-    if @current_user
-      @current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
-    else
-      current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
-    end
+  def user_already_has_recommendation?
+    current_user.recommendations.exists?(imdb_ID: @recommendation.imdb_ID)
   end
 
   def assign_recommendation_to_user
-    if recommendation_is_a_movie? && user_already_has_recommendation
+    if recommendation_was_found? && user_already_has_recommendation?
       notice = "That movie has already been added."
-    elsif recommendation_is_a_movie?
-
-      if @current_user
-        @current_user.recommendations << @recommendation
-      else
-        current_user.recommendations << @recommendation
-      end
+    elsif recommendation_was_found?
+      current_user.recommendations << @recommendation
       alert = "Movie found!"
-
     else
       notice = "Movie not found!"
     end

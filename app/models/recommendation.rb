@@ -44,7 +44,7 @@ class Recommendation < ActiveRecord::Base
     if movie_found? && not_adult_content?
       _build_recommendation(@request_from_omdb)
     else
-      return @request_from_omdb["Error"] || "Adult movie found."
+      return "Movie not found."
     end
   end
 end

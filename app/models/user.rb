@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
       uid:           auth_data["uid"],
       provider:      auth_data["provider"],
       profile_image: auth_data["extra"]["raw_info"]["profile_image_url_https"],
-      phone_number: "+16617069773"
     }
   end
 end

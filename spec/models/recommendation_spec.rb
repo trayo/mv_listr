@@ -35,7 +35,7 @@ RSpec.describe Recommendation, :type => :model do
       VCR.use_cassette "adult recommendation" do
         movie = Recommendation.find_or_create_media("blade 2")
 
-        expect(movie).to eq("Adult movie found.")
+        expect(movie).to eq("Movie not found.")
       end
     end
   end
