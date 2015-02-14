@@ -22,6 +22,7 @@ gem 'dotenv-rails'
 gem 'spring'
 gem 'faraday'
 gem 'webmock',                   group: :test
+gem 'pry-rails'
 
 group :development, :test do
   gem 'spring-commands-rspec'
@@ -36,5 +37,4 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'vcr'
-  gem 'pry-rails'
 end
