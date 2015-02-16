@@ -1,6 +1,6 @@
 language:
   - ruby
 before_script:
-  - psql -c "CREATE USER mv_listr" -U postgres
+  - psql -c 'create database mv_listr_test;' -U postgres
 rvm:
   - "2.2.0"
