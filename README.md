@@ -1,6 +1,7 @@
 # MV Listr
 
 [![Code Climate](https://codeclimate.com/github/trayo/mv_listr/badges/gpa.svg)](https://codeclimate.com/github/trayo/mv_listr)
+[![Build Status](https://travis-ci.org/trayo/mv_listr.svg?branch=master)](https://travis-ci.org/trayo/mv_listr)
 
 ### To get started visit [MV Listr](www.mvlistr.com) and sign in with Twitter.
 
