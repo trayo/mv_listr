@@ -1,0 +1,6 @@
+language:
+  - ruby
+before_script:
+  - psql -c 'create database mv_listr_test;' -U postgres
+rvm:
+  - "2.2.0"
