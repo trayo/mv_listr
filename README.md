@@ -20,12 +20,15 @@ Software and Design that is capable of consuming an API.
 ***
 ### Setup
 
-1. Clone MV Listr to your local machine with: `git clone https://github.com/trayo/mv_listr.git`
-1. Install gems with: `bundle`
-1. With Postgres installed, run `rake db:create`
+1. Clone MV Listr to your local machine with:  
+    `git clone https://github.com/trayo/mv_listr.git`
+
+1. Install gems with: `bundle install`
+
 1. Then setup the database: `rake db:setup`
-1. Then run the migrations: `rake db:migrate`
+
 1. Launch the server with: `rails s`
+
 1. Go to `localhost:3000`
 
 ***
