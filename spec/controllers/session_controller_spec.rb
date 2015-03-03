@@ -39,6 +39,7 @@ RSpec.describe SessionsController, :type => :controller do
       post :create
 
       expect(User.count).to eq(1)
+      expect(User.first.uid).to eq("654321")
     end
   end
 end
