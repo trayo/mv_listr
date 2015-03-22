@@ -29,10 +29,12 @@ class TwilioController < ApplicationController
   def assign_recommendation_to_user
     if recommendation_was_found? && user_already_has_recommendation?
       # Placeholder for sending a message back to the user
+      # that says they already added that movie
     elsif recommendation_was_found?
       @twilio_user.recommendations << @recommendation
     else
       # Placeholder for sending a message back to the user
+      # that says the movie wasn't found
     end
   end
 end
