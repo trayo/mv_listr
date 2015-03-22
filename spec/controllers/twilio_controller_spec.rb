@@ -29,7 +29,7 @@ RSpec.describe TwilioController do
     {
       "Body": "looper",
       "From": "+15554443333",
-      "format": "xml",
+      "format": "json",
     }
   end
 end
