@@ -1,15 +1,15 @@
 <div class="row top-panel">
-  <div class="small-12 large-6 large-centered columns panel round logo">
+  <div class="small-6 small-centered columns panel round logo">
     <h1>MV Listr</h1>
   </div>
 </div>
 
 <div class="row top-panel">
-  <div class="small-12 large-4 large-centered columns twitter background-transparent">
+  <div class="small-6 small-centered columns twitter background-transparent">
     <% unless current_user %>
-      <h3>
+      <h1>
         <%= link_to "Login with Twitter", auth_twitter_path %>
-      </h3>
+      </h1>
     <% end %>
   </div>
 </div>
