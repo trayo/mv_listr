@@ -4,7 +4,7 @@ RSpec.describe "Searching for media" do
 
   feature "finding a movie" do
     scenario "a user can't go to recommendations page without logging in" do
-      visit "/recommendations"
+      visit recommendations_path
 
       expect(page).to have_content("You must be logged in")
     end
@@ -51,7 +51,7 @@ RSpec.describe "Searching for media" do
 
   feature "marking movies as watched" do
     scenario "can't go to the watched page without logging in" do
-      visit "/recommendations/watched"
+      visit recommendations_watched_path
 
       expect(page).to have_content("You must be logged in")
     end
@@ -64,7 +64,7 @@ RSpec.describe "Searching for media" do
       click_button "Watched it"
       expect(page).to have_content("No recommendations found.")
 
-      visit "/recommendations/watched"
+      visit recommendations_watched_path
       expect(page).to have_content("Looper (2012)")
     end
   end
@@ -84,7 +84,7 @@ RSpec.describe "Searching for media" do
 
       search_for_the_movie("Looper")
       click_button "Watched it"
-      visit "/recommendations/watched"
+      visit recommendations_watched_path
 
       click_button "Delete"
       expect(page).to have_content("No watched recommendations found.")
