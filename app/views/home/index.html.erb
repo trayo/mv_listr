@@ -1,12 +1,14 @@
 <div class="row top-panel">
-  <div class="small-12 large-7 column panel round">
-    <h3>
-      Our website has the ability to search IMDB and list movies, or TV
-      shows that your friends have recommended to you.
-    </h3>
+  <div class="small-12 large-6 large-centered columns panel round logo">
+    <h1>MV Listr</h1>
+  </div>
+</div>
+
+<div class="row top-panel">
+  <div class="small-12 large-4 large-centered columns twitter background-transparent">
     <% unless current_user %>
       <h3>
-        <%= link_to "Login with Twitter to get started.", auth_twitter_path %>
+        <%= link_to "Login with Twitter", auth_twitter_path %>
       </h3>
     <% end %>
   </div>
