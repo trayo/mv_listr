@@ -77,6 +77,7 @@ RSpec.describe "Searching for media" do
 
       click_button "Delete"
       expect(page).to have_content("No recommendations found.")
+      expect(page).to have_content("Movie deleted.")
     end
 
     scenario "a user can delete a movie from their watched recommendations" do
