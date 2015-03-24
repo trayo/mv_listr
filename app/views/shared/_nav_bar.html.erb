@@ -45,50 +45,7 @@
   </nav>
 
   <nav class="top-bar show-for-small" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "MV Listr", root_path, class: "title-small" %></h1>
-      </li>
-        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="left">
-        <% if current_user %>
-          <li class="has-form">
-          <%= form_tag recommendations_path, method: "post" do %>
-            <div class="row collapse">
-              <div class="small-7 columns">
-                <%= text_field_tag "search_2", nil, placeholder: "Add a movie"  %>
-              </div>
-              <div class="small-5 columns">
-                <%= submit_tag "Search", class: "font-position-small secondary button"  %>
-              </div>
-            </div>
-          <% end %>
-          </li>
-        <% end %>
-      </ul>
-
-      <ul class="right">
-        <% if current_user %>
-          <li class="active">
-            <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
-          </li>
-          <li>
-            <%= link_to "My Recommendations", recommendations_path, class: "round-button background-transparent" %>
-          </li>
-          <li>
-            <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
-          </li>
-        <% else %>
-          <li class="active">
-            <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
-          </li>
-        <% end %>
-      </ul>
-    </section>
+    <%= render partial: "shared/mobile_nav_bar" %>
   </nav>
 
   <%= render partial: "shared/flash" %>
