@@ -54,6 +54,23 @@
     </ul>
 
     <section class="top-bar-section">
+      <ul class="left">
+        <% if current_user %>
+          <li class="has-form">
+          <%= form_tag recommendations_path, method: "post" do %>
+            <div class="row collapse">
+              <div class="small-7 columns">
+                <%= text_field_tag "search_2", nil, placeholder: "Add a movie"  %>
+              </div>
+              <div class="small-5 columns">
+                <%= submit_tag "Search", class: "font-position-small secondary button"  %>
+              </div>
+            </div>
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+
       <ul class="right">
         <% if current_user %>
           <li class="active">
@@ -68,23 +85,6 @@
         <% else %>
           <li class="active">
             <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
-          </li>
-        <% end %>
-      </ul>
-
-      <ul class="left">
-        <% if current_user %>
-          <li class="has-form">
-            <%= form_tag recommendations_path, method: "post" do %>
-              <div class="row collapse">
-                <div class="small-7 columns">
-                  <%= text_field_tag "search_2", nil, placeholder: "Add a movie"  %>
-                </div>
-                <div class="small-5 columns">
-                  <%= submit_tag "Search", class: "font-position-small secondary button"  %>
-                </div>
-              </div>
-            <% end %>
           </li>
         <% end %>
       </ul>
