@@ -18,12 +18,12 @@ gem 'foundation-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
-gem 'spring'
 gem 'faraday'
 gem 'webmock',                   group: :test
 gem 'pry-rails'
 
 group :development, :test do
+  gem 'spring'
   gem 'spring-commands-rspec'
   gem 'better_errors'
   gem 'binding_of_caller'
