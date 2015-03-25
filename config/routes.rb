@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root "home#index"
 
   resources :sessions, only: [:create]
-  resources :recommendations, only: [:index,  :create, :update, :destroy]
+  resources :recommendations, only: [:create, :update, :destroy]
 
-  resources :watched_recommendations, only: [:destroy]
+  get "/recommendations",
+      to: "recommendations#index",
+      watched_status: false
+
+  get "/recommendations/watched",
+      to: "recommendations#index",
+      watched_status: true
 
   resources :twilio, only: [:create]
 
-  get '/recommendations/watched', to: 'watched_recommendations#index'
-  delete '/logout', to: 'sessions#destroy'
+  delete "/logout", to: "sessions#destroy"
 
-  get '/auth/twitter'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get "/auth/twitter"
+  get "/auth/:provider/callback", to: "sessions#create"
 end

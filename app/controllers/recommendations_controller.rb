@@ -2,7 +2,7 @@ class RecommendationsController < ApplicationController
   before_action :require_current_user
 
   def index
-    @recommendations = current_user.watched_recommendations(false)
+    @recommendations = current_user.watched_recommendations(watched_status)
   end
 
   def create
@@ -15,20 +15,34 @@ class RecommendationsController < ApplicationController
   end
 
   def update
-    user_recommendation = UserRecommendation.find_by(user_id: current_user, recommendation_id: params["id"])
-    user_recommendation.update_attributes(watched: true)
-    redirect_to recommendations_path, alert: "Movie updated."
+    find_user_recommendation.update_attributes(watched: watched_status)
+    redirect_to :back, alert: "Movie updated."
   end
 
   def destroy
-    UserRecommendation.find_by(user_id: current_user, recommendation_id: params["id"]).destroy
-    redirect_to recommendations_path, alert: "Movie deleted."
+    find_user_recommendation.destroy
+    redirect_to :back, alert: "Movie deleted."
   end
 
   private
 
   def search_params
     params["search_1"] || params["search_2"]
+  end
+
+  def watched_status
+    params["watched_status"]
+  end
+
+  def find_user_recommendation
+    UserRecommendation.find_by(current_user_and_recommendation_id)
+  end
+
+  def current_user_and_recommendation_id
+    {
+      user_id: current_user,
+      recommendation_id: params["id"]
+    }
   end
 
   def recommendation_was_found?

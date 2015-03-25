@@ -4,20 +4,18 @@
   </div>
 </div>
 
-<% if @recommendations.empty? %>
+<% if recommendations.empty? %>
   <div class="row">
     <div class="small-12 small-centered columns panel round">
       <h3>No watched recommendations found.</h3>
     </div>
   </div>
 <% else %>
-  <% @recommendations.each do |recommendation| %>
+  <% recommendations.each do |recommendation| %>
     <div class="row">
       <div class="small-12 small-centered columns panel round">
-        <%= render partial: "shared/watched_recommendation", locals: {recommendation: recommendation} %>
+        <%= render partial: "shared/recommendation", locals: { recommendation: recommendation } %>
       </div>
     </div>
   <% end %>
 <% end %>
-
-<div style="clear:both"></div>
