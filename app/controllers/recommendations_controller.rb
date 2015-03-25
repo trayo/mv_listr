@@ -16,12 +16,12 @@ class RecommendationsController < ApplicationController
 
   def update
     find_user_recommendation.update_attributes(watched: watched_status)
-    redirect_to recommendations_path, alert: "Movie updated."
+    redirect_to :back, alert: "Movie updated."
   end
 
   def destroy
     find_user_recommendation.destroy
-    redirect_to recommendations_path, alert: "Movie deleted."
+    redirect_to :back, alert: "Movie deleted."
   end
 
   private
