@@ -15,7 +15,7 @@ class RecommendationsController < ApplicationController
   end
 
   def update
-    find_user_recommendation.update_attributes(watched: true)
+    find_user_recommendation.update_attributes(watched: watched_status)
     redirect_to recommendations_path, alert: "Movie updated."
   end
 
