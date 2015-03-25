@@ -56,15 +56,20 @@ RSpec.describe "Searching for media" do
       expect(page).to have_content("You must be logged in")
     end
 
-    scenario "a user can mark a movie as watched" do
+    scenario "a user can mark a movie as watched and unwatched" do
       sign_in_via_twitter
-
       search_for_the_movie("Looper")
 
-      click_button "Watched it"
+      click_button "Mark as watched"
       expect(page).to have_content("No recommendations found.")
 
       visit recommendations_watched_path
+      expect(page).to have_content("Looper (2012)")
+
+      click_button "Mark as unwatched"
+      expect(page).to have_content("No watched recommendations found.")
+
+      visit recommendations_path
       expect(page).to have_content("Looper (2012)")
     end
   end
@@ -84,11 +89,12 @@ RSpec.describe "Searching for media" do
       sign_in_via_twitter
 
       search_for_the_movie("Looper")
-      click_button "Watched it"
+      click_button "Mark as watched"
       visit recommendations_watched_path
 
       click_button "Delete"
       expect(page).to have_content("No watched recommendations found.")
+      expect(page).to have_content("Movie deleted.")
     end
   end
 
