@@ -9,7 +9,7 @@
     <section class="top-bar-section">
       <% if current_user %>
         <ul class="left">
-          <li class="has-form background-transparent">
+          <li class="has-form bt">
             <%= form_tag recommendations_path, method: "post" do %>
               <div class="row collapse">
                 <div class="small-7 columns">
@@ -27,8 +27,8 @@
       <ul class="right">
         <% if current_user %>
           <div class="show-for-medium">
-            <li class="has-dropdown background-transparent">
-              <a href="" class="background-transparent font-size">Recommendations</a>
+            <li class="has-dropdown bt">
+              <a href="" class="font-size bt ">Recommendations</a>
               <ul class="dropdown">
                 <div style="margin-top: 5px" ></div>
                 <li>
@@ -46,10 +46,10 @@
 
           <div class="show-for-large-up">
             <li>
-              <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
+              <%= link_to "Watched Recommendations", recommendations_watched_path, class: "font-size bt" %>
             </li>
             <li>
-              <%= link_to "Recommendations", recommendations_path, class: "round-button background-transparent" %>
+              <%= link_to "Recommendations", recommendations_path, class: "font-size bt" %>
             </li>
             <li class="active">
               <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>

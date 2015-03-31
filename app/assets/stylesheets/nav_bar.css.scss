@@ -42,7 +42,7 @@
   padding-top: 5px;
 }
 
-.background-transparent {
+.bt {
   background: transparent !important;
 }
 
@@ -59,11 +59,7 @@
   top: initial;
 }
 
-.dropdown li {
-  background: rgba(50, 50, 50, 0.7) !important;
-}
-
-.dropdown li a {
+.show-for-large-up li {
   background: transparent !important;
 }
 
