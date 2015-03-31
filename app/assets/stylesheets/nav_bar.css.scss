@@ -37,7 +37,6 @@
 
 .color-and-opacity {
   background: rgba(50, 50, 50, 0.7);
-  // height: 55px;
   padding-bottom: 50px;
   padding-top: 5px;
 }
@@ -63,3 +62,10 @@
   background: transparent !important;
 }
 
+.show-for-small .right li {
+  text-align: center;
+}
+
+.show-for-small .left .collapse {
+  margin-left: 12%;
+}
