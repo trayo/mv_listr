@@ -1,5 +1,5 @@
 <div class="fixed">
-  <nav class="top-bar nav-padding color-and-opacity hide-for-small" data-topbar role="navigation">
+  <nav class="top-bar nav-padding color-and-opacity show-for-medium-up" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1><%= link_to "MV Listr", root_path, class: "title" %></h1>
@@ -26,15 +26,35 @@
 
       <ul class="right">
         <% if current_user %>
-          <li class="background-transparent">
-            <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
-          </li>
-          <li class="background-transparent">
-            <%= link_to "Recommendations", recommendations_path, class: "round-button background-transparent" %>
-          </li>
-          <li class="active">
-            <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
-          </li>
+          <div class="show-for-medium">
+            <li class="has-dropdown background-transparent">
+              <a href="" class="background-transparent font-size">Recommendations</a>
+              <ul class="dropdown">
+                <div style="margin-top: 5px" ></div>
+                <li>
+                  <%= link_to "Watched Recommendations", recommendations_watched_path, class: "font-size" %>
+                </li>
+                <li>
+                  <%= link_to "Recommendations", recommendations_path, class: "font-size" %>
+                </li>
+              </ul>
+              <li class="active">
+                <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+              </li>
+            </li>
+          </div>
+
+          <div class="show-for-large-up">
+            <li>
+              <%= link_to "Watched Recommendations", recommendations_watched_path, class: "round-button background-transparent" %>
+            </li>
+            <li>
+              <%= link_to "Recommendations", recommendations_path, class: "round-button background-transparent" %>
+            </li>
+            <li class="active">
+              <%= link_to "Sign out", logout_path, method: :delete, class: "round-button" %>
+            </li>
+          </div>
         <% else %>
           <li class="active">
             <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
