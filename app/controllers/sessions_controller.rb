@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_or_create_by_auth(auth_data)
+    if params["uid"]
+      user = User.find_by(uid: params["uid"])
+    else
+      user = User.find_or_create_by_auth(auth_data)
+    end
+
     session["user_id"] = user.id
     redirect_to recommendations_path
   end
