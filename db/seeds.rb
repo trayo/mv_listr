@@ -11,8 +11,8 @@ class Seeds
   end
 
   def generate_users_and_recommendations
-    NUMBER_OF_USERS.times do |i|
-      user = User.create!(user_params)
+    1.upto NUMBER_OF_USERS do |i|
+      user = User.create!(user_params i)
       generate_recommendations(user)
     end
     puts "Users created!"
@@ -28,13 +28,13 @@ class Seeds
     end
   end
 
-  def user_params(name = Faker::Name.first_name, uid = "#{random_twitter_uid}")
+  def user_params(uid)
     {
-      name:          name,
+      name:          Faker::Name.first_name,
       screen_name:   Faker::Internet.user_name,
       provider:      "twitter",
       profile_image: "http://robohash.org/#{rand(9)}.png?set=set1&size=200x200",
-      uid:           uid
+      uid:           uid,
     }
   end
 
