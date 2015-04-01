@@ -28,7 +28,7 @@
         <% if current_user %>
           <div class="show-for-medium">
             <li class="has-dropdown bt">
-              <a href="" class="font-size bt ">Recommendations</a>
+              <%= link_to "Recommendations", "", class: "font-size bt" %>
               <ul class="dropdown">
                 <div style="margin-top: 5px" ></div>
                 <li>
@@ -56,6 +56,9 @@
             </li>
           </div>
         <% else %>
+          <% if Rails.env.development? %>
+            <%= render partial: "shared/development_users_dropdown" %>
+          <% end %>
           <li class="active">
             <%= link_to "Login with Twitter", auth_twitter_path, class: "round-button" %>
           </li>
