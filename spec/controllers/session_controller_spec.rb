@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SessionsController, :type => :controller do
-  describe 'omniauth' do
+  describe "omniauth" do
 
     it "logs in a new user" do
       @request.env["omniauth.auth"] = auth_data
@@ -15,7 +15,7 @@ RSpec.describe SessionsController, :type => :controller do
     it "logs in an existing user" do
       @request.env["omniauth.auth"] = auth_data
 
-      user = create(:user, uid: "123456")
+      create(:user, uid: "123456")
 
       post :create
 
@@ -36,17 +36,17 @@ RSpec.describe SessionsController, :type => :controller do
 
   def auth_data
     {
-      'provider' => 'twitter',
-      'info' =>
+      "provider" => "twitter",
+      "info" =>
         {
-          'name' => 'Alice Smith',
-          'nickname' => 'asmith'
+          "name" => "Alice Smith",
+          "nickname" => "asmith"
         },
-      'uid' => '123456',
-      'extra' =>
+      "uid" => "123456",
+      "extra" =>
         {
-          'raw_info' =>
-            { 'profile_image_url_https' => 'http://robohash.org/1.png' }
+          "raw_info" =>
+            { "profile_image_url_https" => "http://robohash.org/1.png" }
         }
     }
   end
