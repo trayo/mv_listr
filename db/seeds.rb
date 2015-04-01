@@ -34,7 +34,7 @@ class Seeds
       screen_name:   Faker::Internet.user_name,
       provider:      "twitter",
       profile_image: "http://robohash.org/#{rand(9)}.png?set=set1&size=200x200",
-      uid:           uid,
+      uid:           uid
     }
   end
 
