@@ -1,2 +1,4 @@
 scss:
   enabled: false
+Style/ExtraSpacing:
+  enabled: false

@@ -1,0 +1,8 @@
+<li class="has-dropdown">
+  <%= link_to "Development Users", "", class: "font-size" %>
+  <ul class="dropdown">
+    <% 1.upto 5 do |i| %>
+      <li><%= link_to "User #{i}", sessions_path(uid: i), method: :post, class: "font-size" %></li>
+    <% end %>
+  </ul>
+</li>

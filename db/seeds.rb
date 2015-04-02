@@ -1,18 +1,18 @@
 class Seeds
-  NUMBER_OF_USERS           = 5
+  NUMBER_OF_USERS = 5
   NUMBER_OF_RECOMMENDATIONS = 10
-  RATINGS                   = %w(G PG PG-13 R NC-17)
-  MONTHS                    = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
-  GENRES                    = %w(Action Crime Sci-Fi Drama Mystery Thriller Horror)
-  MEDIA_TYPES               = %w(movie series episode)
+  RATINGS = %w(G PG PG-13 R NC-17)
+  MONTHS = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
+  GENRES = %w(Action Crime Sci-Fi Drama Mystery Thriller Horror)
+  MEDIA_TYPES = %w(movie series episode)
 
   def initialize
     generate_users_and_recommendations
   end
 
   def generate_users_and_recommendations
-    NUMBER_OF_USERS.times do |i|
-      user = User.create!(user_params)
+    1.upto NUMBER_OF_USERS do |i|
+      user = User.create!(user_params i)
       generate_recommendations(user)
     end
     puts "Users created!"
@@ -28,17 +28,19 @@ class Seeds
     end
   end
 
-  def user_params(name = Faker::Name.first_name, uid = "#{random_twitter_uid}")
-    { name:          name,
+  def user_params(uid)
+    {
+      name:          Faker::Name.first_name,
       screen_name:   Faker::Internet.user_name,
       provider:      "twitter",
-      profile_image: "http://robohash.org/#{rand(10000)}.png?set=set1&size=200x200",
-      uid:           uid
+      profile_image: "http://robohash.org/#{rand(9)}.png?set=set1&size=200x200",
+      uid:           uid,
     }
   end
 
   def recommendation_params
-    { title:       "#{Faker::App.name} #{Faker::App.name}",
+    {
+      title:       "#{Faker::App.name} #{Faker::App.name}",
       year:        "#{random_movie_year_starting_at_1920}",
       rated:       "#{RATINGS.sample}",
       released:    "#{random_release_date}",
@@ -46,12 +48,12 @@ class Seeds
       genre:       "#{random_genres}",
       director:    Faker::Name.name,
       writer:      Faker::Name.name,
-      actors:      "#{Faker::Name.name}, #{Faker::Name.name}, #{Faker::Name.name}",
+      actors:      "#{Faker::Name.name}, #{Faker::Name.name}",
       plot:        Faker::Lorem.sentence,
       language:    "English",
       country:     "USA",
-      awards:      "Won #{rand(15)} Oscars. Another #{rand(50)} wins & #{rand(50)} nominations.",
-      poster:      "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+      awards:      "Won #{rand(15)} Oscars.",
+      poster:      "http://img.omdbapi.com/?i=tt1276104&apikey=c2505740",
       metascore:   "#{Random.rand(100)}",
       imdb_rating: "#{random_rating}",
       imdb_ID:     "tt#{random_imdb_id}",
