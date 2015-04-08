@@ -21,27 +21,23 @@
         <%= recommendation.plot %>
       </li>
       <div class="line-separator"></div>
-      <ul class="button-group">
-        <% if viewing_recommendations? %>
-          <li>
-            <%= button_to('     Mark as watched',
-                          { action: "update", id: recommendation.id, watched_status: true },
-                          method: "put", remote: true, class: "watched")
-            %>
-          </li>
-        <% else %>
-          <li>
-            <%= button_to('     Mark as unwatched',
-                          { action: "update", id: recommendation.id, watched_status: false },
-                          method: "put", remote: true, class: "watched")
-            %>
-          </li>
-        <% end %>
-        <li>
-          <%= button_to('       Delete', { action: "destroy", id: recommendation.id },
-                        method: "delete", remote: true, class: "delete") %>
-        </li>
-      </ul>
+
+      <% if viewing_recommendations? %>
+        <%= button_to('Mark as watched',
+                      { action: "update", id: recommendation.id, watched_status: true },
+                      method: "put", remote: true, class: "watched")
+        %>
+      <% else %>
+        <%= button_to('Mark as unwatched',
+                      { action: "update", id: recommendation.id, watched_status: false },
+                      method: "put", remote: true, class: "watched")
+        %>
+      <% end %>
+
+      <%= button_to('Delete',
+                    { action: "destroy", id: recommendation.id },
+                    method: "delete", remote: true, class: "delete")
+      %>
     </ul>
   </div>
 </div>
