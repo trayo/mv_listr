@@ -12,9 +12,9 @@ class Recommendation < ActiveRecord::Base
     @service ||= OmdbService.new
   end
 
-  def self.find_or_create_media(title_or_ID, media_type = "movie", year = "")
+  def self.find_or_create_media(title_or_ID)
     if not_matching_movie_in_database?(title_or_ID)
-      make_a_request_and_build_recommendation(title_or_ID, media_type, year)
+      make_a_request_and_build_recommendation(title_or_ID)
     else
       find_by_title_or_imdb_id(title_or_ID)
     end
@@ -54,8 +54,8 @@ class Recommendation < ActiveRecord::Base
     !Recommendation.exists?(imdb_ID: imdb_id)
   end
 
-  def self.make_a_request_and_build_recommendation(title_or_ID, media_type, year)
-    @request_from_omdb = service.media(title_or_ID, media_type, year)
+  def self.make_a_request_and_build_recommendation(title_or_ID)
+    @request_from_omdb = service.media(title_or_ID)
 
     if movie_found? && not_adult_content?
       _build_recommendation(@request_from_omdb)

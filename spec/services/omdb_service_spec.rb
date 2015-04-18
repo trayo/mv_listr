@@ -7,7 +7,7 @@ RSpec.describe OmdbService do
       omdb = OmdbService.new
 
       VCR.use_cassette "omdb"  do
-        result = omdb.media("inception", "", "")
+        result = omdb.media("inception")
 
         expect(result["Title"]).to eq("Inception")
       end

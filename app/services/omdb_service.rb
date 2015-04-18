@@ -1,16 +1,24 @@
 class OmdbService
-  attr_reader :connection
+  attr_reader :api
 
   def initialize
-    @connection ||= Faraday.new(url: "http://omdbapi.com/")
+    @api ||= Faraday.new(url: "http://omdbapi.com/")
   end
 
-  def media(title, media_type, year)
-    type = title.include?("tt") ? "i" : "t"
-    parse(connection.get("?#{type}=#{title}&type=#{media_type}&y=#{year}&plot=short&r=json"))
+  def media(title_or_ID)
+    @title_or_ID = add_media_type(title_or_ID)
+
+    parse(api.get("?#{@title_or_ID}&type=movie&plot=short&r=json"))
   end
 
   private
+
+  def add_media_type(title_or_ID)
+    title_or_ID.prepend(title_or_ID.include?("tt") ? "i=" : "t=")
+  end
+
+  def request_params
+  end
 
   def parse(response)
     JSON.parse(response.body)
