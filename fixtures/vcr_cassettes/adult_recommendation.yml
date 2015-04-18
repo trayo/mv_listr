@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://omdbapi.com/?plot=short&r=json&t=blade%202&type=movie&y=
+    uri: http://omdbapi.com/?plot=short&r=json&t=blade%202&type=movie
     body:
       encoding: US-ASCII
       string: ''
@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Cache-Control:
-      - private, max-age=3600
+      - public, max-age=3600
       Content-Type:
-      - text/html; charset=utf-8
+      - application/json; charset=utf-8
       Expires:
-      - Fri, 06 Feb 2015 23:49:07 GMT
+      - Sat, 18 Apr 2015 05:13:03 GMT
       Last-Modified:
-      - Fri, 06 Feb 2015 22:49:07 GMT
+      - Sat, 18 Apr 2015 04:13:03 GMT
       Vary:
       - "*"
       Server:
@@ -37,27 +37,27 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Date:
-      - Fri, 06 Feb 2015 22:49:06 GMT
+      - Sat, 18 Apr 2015 04:13:03 GMT
       Content-Length:
-      - '672'
+      - '667'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJUaXRsZSI6IkFuZ2VsIEJsYWRlIDIiLCJZZWFyIjoiMjAwMSIsIlJhdGVk
-        IjoiVW5yYXRlZCIsIlJlbGVhc2VkIjoiMDUgSnVsIDIwMDIiLCJSdW50aW1l
-        IjoiNDUgbWluIiwiR2VucmUiOiJBbmltYXRpb24sIEFkdWx0LCBBZHZlbnR1
-        cmUiLCJEaXJlY3RvciI6Ik1hc2FtaSDDlGJhcmkiLCJXcml0ZXIiOiJKaW4g
-        S29nYSAoc2NyZWVucGxheSksIE1hc2FtaSDDlGJhcmkgKGNyZWF0b3IpIiwi
-        QWN0b3JzIjoiQnJpZ2l0dGUgRmxhdiwgSG9sbHkgQm9iYml0LCBCcmFuZHkg
-        RGVsbWFyLCBDYXJyaWUgS2VyYW5lbiIsIlBsb3QiOiJJbiB0aGUgbmVhciBm
-        dXR1cmUsIHRoZSBlYXJ0aCBpcyBjb3ZlcmVkIGluIGEgY2hlbWljYWwgc21v
-        ZyBhbmQgRGFyayBNb3RoZXIsIGV2aWwgdmlsbGFpbmVzcywgbGVhZHMgYSBz
-        ZWNyZXQgb3JnYW5pemF0aW9uIGRldm90ZWQgdG8gd29ybGQgZG9taW5hdGlv
-        bi4gQnV0IHRoZXJlIGlzIGEgbWFza2VkIGhlcm9pbmUgbmFtZWQgLi4uIiwi
-        TGFuZ3VhZ2UiOiJKYXBhbmVzZSIsIkNvdW50cnkiOiJKYXBhbiIsIkF3YXJk
-        cyI6Ik4vQSIsIlBvc3RlciI6Ik4vQSIsIk1ldGFzY29yZSI6Ik4vQSIsImlt
-        ZGJSYXRpbmciOiI3LjAiLCJpbWRiVm90ZXMiOiIxNyIsImltZGJJRCI6InR0
-        MDQ3ODQ0NiIsIlR5cGUiOiJtb3ZpZSIsIlJlc3BvbnNlIjoiVHJ1ZSJ9
+        IjoiTi9BIiwiUmVsZWFzZWQiOiI1IEp1bCAyMDAyIiwiUnVudGltZSI6IjQ1
+        IG1pbiIsIkdlbnJlIjoiQW5pbWF0aW9uLCBBZHVsdCwgQWR2ZW50dXJlIiwi
+        RGlyZWN0b3IiOiJNYXNhbWkgw5RiYXJpIiwiV3JpdGVyIjoiSmluIEtvZ2Eg
+        KHNjcmVlbnBsYXkpLCBNYXNhbWkgw5RiYXJpIChjcmVhdG9yKSIsIkFjdG9y
+        cyI6IkJyaWdpdHRlIEZsYXYsIEhvbGx5IEJvYmJpdCwgQnJhbmR5IERlbG1h
+        ciwgQ2FycmllIEtlcmFuZW4iLCJQbG90IjoiSW4gdGhlIG5lYXIgZnV0dXJl
+        LCB0aGUgZWFydGggaXMgY292ZXJlZCBpbiBhIGNoZW1pY2FsIHNtb2cgYW5k
+        IERhcmsgTW90aGVyLCBldmlsIHZpbGxhaW5lc3MsIGxlYWRzIGEgc2VjcmV0
+        IG9yZ2FuaXphdGlvbiBkZXZvdGVkIHRvIHdvcmxkIGRvbWluYXRpb24uIEJ1
+        dCB0aGVyZSBpcyBhIG1hc2tlZCBoZXJvaW5lIG5hbWVkIC4uLiIsIkxhbmd1
+        YWdlIjoiSmFwYW5lc2UiLCJDb3VudHJ5IjoiSmFwYW4iLCJBd2FyZHMiOiJO
+        L0EiLCJQb3N0ZXIiOiJOL0EiLCJNZXRhc2NvcmUiOiJOL0EiLCJpbWRiUmF0
+        aW5nIjoiNy4wIiwiaW1kYlZvdGVzIjoiMTciLCJpbWRiSUQiOiJ0dDA0Nzg0
+        NDYiLCJUeXBlIjoibW92aWUiLCJSZXNwb25zZSI6IlRydWUifQ==
     http_version: 
-  recorded_at: Fri, 06 Feb 2015 22:49:11 GMT
+  recorded_at: Sat, 18 Apr 2015 04:12:13 GMT
 recorded_with: VCR 2.9.3
