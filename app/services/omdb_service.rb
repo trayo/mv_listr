@@ -6,7 +6,8 @@ class OmdbService
   end
 
   def media(title, media_type, year)
-    parse(connection.get("?t=#{title}&type=#{media_type}&y=#{year}&plot=short&r=json"))
+    type = title.include?("tt") ? "i" : "t"
+    parse(connection.get("?#{type}=#{title}&type=#{media_type}&y=#{year}&plot=short&r=json"))
   end
 
   private
