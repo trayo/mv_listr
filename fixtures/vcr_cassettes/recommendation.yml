@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://omdbapi.com/?plot=short&r=json&t=looper&type=movie&y=
+    uri: http://omdbapi.com/?plot=short&r=json&t=looper&type=movie
     body:
       encoding: US-ASCII
       string: ''
@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Cache-Control:
-      - private, max-age=3600
+      - public, max-age=3599
       Content-Type:
-      - text/html; charset=utf-8
+      - application/json; charset=utf-8
       Expires:
-      - Fri, 06 Feb 2015 23:48:56 GMT
+      - Sat, 18 Apr 2015 05:13:03 GMT
       Last-Modified:
-      - Fri, 06 Feb 2015 22:48:56 GMT
+      - Sat, 18 Apr 2015 04:13:03 GMT
       Vary:
       - "*"
       Server:
@@ -37,9 +37,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Date:
-      - Fri, 06 Feb 2015 22:48:56 GMT
+      - Sat, 18 Apr 2015 04:13:03 GMT
       Content-Length:
-      - '788'
+      - '796'
     body:
       encoding: UTF-8
       string: '{"Title":"Looper","Year":"2012","Rated":"R","Released":"28 Sep 2012","Runtime":"119
@@ -47,8 +47,8 @@ http_interactions:
         Johnson","Actors":"Joseph Gordon-Levitt, Bruce Willis, Emily Blunt, Paul Dano","Plot":"In
         2074, when the mob wants to get rid of someone, the target is sent into the
         past, where a hired gun awaits - someone like Joe - who one day learns the
-        mob wants to ''close the loop'' by sending back Joe''s future self for assassination.","Language":"English","Country":"USA,
-        China","Awards":"14 wins & 35 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SX300.jpg","Metascore":"84","imdbRating":"7.5","imdbVotes":"358,937","imdbID":"tt1276104","Type":"movie","Response":"True"}'
+        mob wants to ''close the loop'' by sending back Joe''s future self for assassination.","Language":"English,
+        French","Country":"USA, China","Awards":"14 wins & 35 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SX300.jpg","Metascore":"84","imdbRating":"7.5","imdbVotes":"369,015","imdbID":"tt1276104","Type":"movie","Response":"True"}'
     http_version: 
-  recorded_at: Fri, 06 Feb 2015 22:49:01 GMT
+  recorded_at: Sat, 18 Apr 2015 04:12:13 GMT
 recorded_with: VCR 2.9.3
