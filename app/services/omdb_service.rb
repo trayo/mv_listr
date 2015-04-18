@@ -5,16 +5,16 @@ class OmdbService
     @api ||= Faraday.new(url: "http://omdbapi.com/")
   end
 
-  def media(title_or_ID)
-    @title_or_ID = add_media_type(title_or_ID)
+  def media(title_or_id)
+    @title_or_id = add_media_type(title_or_id)
 
-    parse(api.get("?#{@title_or_ID}&type=movie&plot=short&r=json"))
+    parse(api.get("?#{@title_or_id}&type=movie&plot=short&r=json"))
   end
 
   private
 
-  def add_media_type(title_or_ID)
-    title_or_ID.prepend(title_or_ID.include?("tt") ? "i=" : "t=")
+  def add_media_type(title_or_id)
+    title_or_id.prepend(title_or_id.include?("tt") ? "i=" : "t=")
   end
 
   def request_params
