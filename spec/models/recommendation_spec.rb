@@ -28,6 +28,13 @@ RSpec.describe Recommendation, :type => :model do
 
       expect(movie.title).to eq("inception")
     end
+
+    it "can find a movie by imdb ID" do
+      create(:recommendation, imdb_ID: "tt0909090")
+      movie = Recommendation.find_or_create_media("tt0909090")
+
+      expect(movie.imdb_ID).to eq("tt0909090")
+    end
   end
 
   describe "filtering content" do
