@@ -12,11 +12,11 @@ class Recommendation < ActiveRecord::Base
     @service ||= OmdbService.new
   end
 
-  def self.find_or_create_media(title, media_type = "movie", year = "")
-    if not_matching_movie_in_database?(title)
-      make_a_request_and_build_recommendation(title, media_type, year)
+  def self.find_or_create_media(title_or_ID, media_type = "movie", year = "")
+    if not_matching_movie_in_database?(title_or_ID)
+      make_a_request_and_build_recommendation(title_or_ID, media_type, year)
     else
-      Recommendation.find_by("title LIKE ?", "%#{title.downcase}%")
+      find_by_title_or_imdb_id(title_or_ID)
     end
   end
 
@@ -34,12 +34,28 @@ class Recommendation < ActiveRecord::Base
     !@request_from_omdb["Genre"].include?("Adult")
   end
 
-  def self.not_matching_movie_in_database?(title)
-    Recommendation.where("title LIKE ?", "%#{title.downcase}%").empty?
+  def self.not_matching_movie_in_database?(title_or_ID)
+    not_matching_by_title?(title_or_ID) && not_matching_by_imdb_id?(title_or_ID)
   end
 
-  def self.make_a_request_and_build_recommendation(title, media_type, year)
-    @request_from_omdb = service.media(title, media_type, year)
+  def self.find_by_title_or_imdb_id(title_or_ID)
+    if not_matching_by_title?(title_or_ID)
+      Recommendation.find_by(imdb_ID: title_or_ID)
+    else
+      Recommendation.find_by("title LIKE ?", "%#{title_or_ID.downcase}%")
+    end
+  end
+
+  def self.not_matching_by_title?(title_or_ID)
+    Recommendation.where("title LIKE ?", "%#{title_or_ID.downcase}%").empty?
+  end
+
+  def self.not_matching_by_imdb_id?(imdb_id)
+    !Recommendation.exists?(imdb_ID: imdb_id)
+  end
+
+  def self.make_a_request_and_build_recommendation(title_or_ID, media_type, year)
+    @request_from_omdb = service.media(title_or_ID, media_type, year)
 
     if movie_found? && not_adult_content?
       _build_recommendation(@request_from_omdb)
