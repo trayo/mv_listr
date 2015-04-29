@@ -5,11 +5,11 @@
 </div>
 
 <div class="row top-panel">
-  <div class="small-10 medium-7 large-5 small-centered columns twitter panel round">
-    <% unless current_user %>
+  <% unless current_user %>
+    <div class="small-10 medium-7 large-5 small-centered columns twitter panel round">
       <h1>
         <%= link_to "Login with Twitter", auth_twitter_path %>
       </h1>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
