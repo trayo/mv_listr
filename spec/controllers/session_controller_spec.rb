@@ -37,17 +37,16 @@ RSpec.describe SessionsController, :type => :controller do
   def auth_data
     {
       "provider" => "twitter",
-      "info" =>
-        {
-          "name" => "Alice Smith",
-          "nickname" => "asmith"
-        },
+      "info" => {
+        "name" => "Alice Smith",
+        "nickname" => "asmith"
+      },
       "uid" => "123456",
-      "extra" =>
-        {
-          "raw_info" =>
-            { "profile_image_url_https" => "http://robohash.org/1.png" }
+      "extra" => {
+        "raw_info" => {
+          "profile_image_url_https" => "http://robohash.org/1.png"
         }
+      }
     }
   end
 end
