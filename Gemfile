@@ -19,7 +19,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'faraday'
-gem 'webmock',                   group: :test
+gem 'webmock',                  group: :test
 gem 'pry-rails'
 
 group :development, :test do
