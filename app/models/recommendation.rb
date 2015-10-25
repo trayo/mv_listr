@@ -20,7 +20,7 @@ class Recommendation < ActiveRecord::Base
     end
   end
 
-  def self._build_recommendation(request_from_omdb)
+  def self.build_recommendation(request_from_omdb)
     create!(RecommendationParser.new(request_from_omdb).clean_up)
   end
 
@@ -58,7 +58,7 @@ class Recommendation < ActiveRecord::Base
     @request_from_omdb = service.media(title_or_id)
 
     if movie_found? && not_adult_content?
-      _build_recommendation(@request_from_omdb)
+      build_recommendation(@request_from_omdb)
     else
       return "Movie not found."
     end
