@@ -21,6 +21,7 @@ gem 'dotenv-rails'
 gem 'faraday'
 gem 'webmock',                   group: :test
 gem 'pry-rails'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'spring'
