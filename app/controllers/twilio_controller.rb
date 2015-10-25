@@ -1,4 +1,6 @@
 class TwilioController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     if User.exists?(phone_number: params["From"])
       @recommendation = Recommendation.find_or_create_media(search_params)
