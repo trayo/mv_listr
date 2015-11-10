@@ -4,8 +4,8 @@ platform: linux
 image: "docker:///ubuntu"
 
 inputs:
-  - name: my-repo
+  - name: mv_listr
 
 run:
-  path: my-repo/bin/rspec
+  path: mv_listr/bin/rspec
 
