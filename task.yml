@@ -1,0 +1,11 @@
+---
+platform: linux
+
+image: "docker:///ubuntu"
+
+inputs:
+  - name: my-repo
+
+run:
+  path: my-repo/bin/rspec
+
