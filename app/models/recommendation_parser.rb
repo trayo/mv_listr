@@ -1,16 +1,17 @@
 class RecommendationParser
 
-  RECOMMENDATION_ATTRIBUTES = { "Title" => "title",         "Year"  => "year",
-                                "Rated" => "rated",         "Released" => "released",
-                                "Runtime" => "runtime",     "Genre" => "genre",
-                                "Director" => "director",   "Writer" => "writer",
-                                "Actors" => "actors",       "Plot" => "plot",
-                                "Language" => "language",   "Country" => "country",
-                                "Awards" => "awards",       "Poster" => "poster",
-                                "Metascore" => "metascore", "imdbRating" => "imdb_rating",
-                                "imdbVotes" => "imdb_votes", "imdbID" => "imdb_ID",
-                                "Type" => "media_type",     "Response" => "response"
-                              }
+  RECOMMENDATION_ATTRIBUTES = {
+    "Title" => "title",          "Year"  => "year",
+    "Rated" => "rated",          "Released" => "released",
+    "Runtime" => "runtime",      "Genre" => "genre",
+    "Director" => "director",    "Writer" => "writer",
+    "Actors" => "actors",        "Plot" => "plot",
+    "Language" => "language",    "Country" => "country",
+    "Awards" => "awards",        "Poster" => "poster",
+    "Metascore" => "metascore",  "imdbRating" => "imdb_rating",
+    "imdbVotes" => "imdb_votes", "imdbID" => "imdb_ID",
+    "Type" => "media_type",      "Response" => "response"
+  }
 
   def initialize(recommendation_json_from_omdb)
     @recommendation_json_from_omdb = recommendation_json_from_omdb
