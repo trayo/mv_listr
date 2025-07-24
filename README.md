@@ -1,7 +1,5 @@
 # MV Listr
 
-[![Circle CI](https://circleci.com/gh/trayo/mv_listr.svg?style=svg)](https://circleci.com/gh/trayo/mv_listr)
-
 ### To get started, visit [MV Listr](www.mvlistr.com) and sign in with Twitter.
 
 ***
